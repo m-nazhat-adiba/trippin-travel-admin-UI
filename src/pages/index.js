@@ -4,8 +4,9 @@ import PromoCard from "@/components/cards/PromoCard";
 import UserTable from "@/components/user-table";
 import NavBar from "@/components/navigation/NavBar";
 import SideBar from "@/components/navigation/SideBar";
+import React from "react";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="flex w-screen mx-auto">
       <SideBar />
@@ -29,4 +30,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;

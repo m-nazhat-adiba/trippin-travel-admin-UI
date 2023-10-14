@@ -1,4 +1,4 @@
-import InputField from "@/components/common/InputField";
+import InputField from "@/components/common/input/InputField";
 import Image from "next/image";
 import React, { useState } from "react";
 

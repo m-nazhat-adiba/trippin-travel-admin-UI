@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
+import usePath from "@/hooks/usePath";
 import { Icon } from "@iconify/react";
-import { useRouter } from "next/router";
 
 const SideBar = () => {
-  const router = useRouter();
-  const path = router.pathname;
+  const path = usePath();
+
   return (
     <div className="flex flex-col h-screen w-[298px] px-8 gap-6">
       <Image

@@ -1,10 +1,9 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { useRouter } from "next/router";
+import usePath from "@/hooks/usePath";
 
 const NavBar = () => {
-  const router = useRouter();
-  const path = router.pathname;
+  const path = usePath();
   return (
     <div className="flex justify-between w-full items-center px-5 py-8">
       <div className="flex flex-col">

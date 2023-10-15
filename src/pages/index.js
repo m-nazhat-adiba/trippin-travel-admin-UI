@@ -5,12 +5,12 @@ import UserTable from "@/components/dashboard/user-table";
 import Layout from "@/components/common/layout";
 import React from "react";
 import useAxios from "@/hooks/useAxios";
-import { activityConfig, userConfig } from "@/constant/config";
+import { ACTIVITY_CONFIG, USER_CONFIG } from "@/constant/config";
 import { ACTIVITY_API, USERS_API } from "@/apis/api";
 
 const Home = () => {
-  const userData = useAxios(USERS_API, userConfig);
-  const activityData = useAxios(ACTIVITY_API, activityConfig);
+  const userData = useAxios(USERS_API, USER_CONFIG);
+  const activityData = useAxios(ACTIVITY_API, ACTIVITY_CONFIG);
 
   return (
     <Layout>

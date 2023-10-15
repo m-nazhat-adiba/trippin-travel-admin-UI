@@ -6,16 +6,11 @@ import Layout from "@/components/common/layout";
 import React from "react";
 import useAxios from "@/hooks/useAxios";
 import { activityConfig, userConfig } from "@/constant/config";
+import { ACTIVITY_API, USERS_API } from "@/apis/api";
 
 const Home = () => {
-  const userData = useAxios(
-    "https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/all-user",
-    userConfig
-  );
-  const activityData = useAxios(
-    "https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/activities",
-    activityConfig
-  );
+  const userData = useAxios(USERS_API, userConfig);
+  const activityData = useAxios(ACTIVITY_API, activityConfig);
 
   return (
     <Layout>

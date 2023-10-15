@@ -1,7 +1,7 @@
 import React from "react";
 import UserTableRow from "./container/UserTableRow";
 
-const UserTable = () => {
+const UserTable = ({ userData }) => {
   return (
     <div className="flex flex-col bg-white shadow-lg">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -25,10 +25,9 @@ const UserTable = () => {
                 </tr>
               </thead>
               <tbody>
-                <UserTableRow />
-                <UserTableRow />
-                <UserTableRow />
-                <UserTableRow />
+                {userData.data.map((item, key) =>
+                  key < 5 ? <UserTableRow data={item} key={key} /> : null
+                )}
               </tbody>
             </table>
           </div>

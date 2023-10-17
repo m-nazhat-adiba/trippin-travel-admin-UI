@@ -9,7 +9,7 @@ const SideBar = () => {
   const path = usePath();
 
   return (
-    <div className="flex flex-col h-screen w-[298px] px-8 gap-6">
+    <div className="flex flex-col h-full w-[298px] px-8 gap-6 sticky top-0">
       <Image
         src="/logo.png"
         width={192}

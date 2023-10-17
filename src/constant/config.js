@@ -9,7 +9,7 @@ export const USER_CONFIG = {
   },
 };
 
-export const ACTIVITY_CONFIG = {
+export const GENERAL_CONFIG = {
   headers: {
     apiKey: API_KEY,
   },

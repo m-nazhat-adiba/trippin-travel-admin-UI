@@ -1,3 +1,4 @@
+import imageLoader from "@/utils/imageLoader";
 import Image from "next/image";
 import React from "react";
 
@@ -14,6 +15,7 @@ const ActivityCard = ({ activityData }) => {
         <p className="w-1/2 py-2">{activityData.description}</p>
       </div>
       <Image
+        loader={imageLoader}
         src={activityData.imageUrls[0]}
         width={360}
         height={256}

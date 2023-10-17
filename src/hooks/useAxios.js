@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { fetchData } from "@/utils/fetchData";
 
 function useAxios(url, config) {
   const [data, setData] = useState(null);
@@ -7,17 +7,18 @@ function useAxios(url, config) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Axios GET request
-    axios
-      .get(url, config)
-      .then((response) => {
-        setData(response.data);
+    const fetchDataFromApi = async () => {
+      try {
+        const result = await fetchData(url, config);
+        setData(result);
+      } catch (error) {
+        setError(error);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchDataFromApi();
   }, [url]);
 
   return { data, loading, error };

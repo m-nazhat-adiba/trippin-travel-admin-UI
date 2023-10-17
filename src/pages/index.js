@@ -1,16 +1,16 @@
 import ActivityCard from "@/components/dashboard/cards/ActivityCard";
 import AnalyticCard from "@/components/dashboard/cards/AnalyticCard";
-import PromoCard from "@/components/dashboard/cards/PromoCard";
+import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
 import Layout from "@/components/common/layout";
 import React from "react";
 import useAxios from "@/hooks/useAxios";
 import { ACTIVITIES, USERS } from "@/apis/api";
-import { ACTIVITY_CONFIG, USER_CONFIG } from "@/constant/config";
+import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import UserHighlightTable from "@/components/dashboard/table";
 
 const Home = () => {
   const userData = useAxios(USERS.GET_ALL_USERS, USER_CONFIG);
-  const activityData = useAxios(ACTIVITIES.GET_ALL_ACTIVITIES, ACTIVITY_CONFIG);
+  const activityData = useAxios(ACTIVITIES.GET_ALL_ACTIVITIES, GENERAL_CONFIG);
 
   return (
     <Layout>
@@ -57,7 +57,7 @@ const Home = () => {
           ) : (
             <ActivityCard activityData={activityData.data.data[0]} />
           )}
-          <PromoCard />
+          <PromoHighlight />
         </div>
         <div>
           {userData.loading ? (

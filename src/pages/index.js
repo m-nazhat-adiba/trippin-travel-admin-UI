@@ -1,16 +1,16 @@
 import ActivityCard from "@/components/dashboard/cards/ActivityCard";
 import AnalyticCard from "@/components/dashboard/cards/AnalyticCard";
 import PromoCard from "@/components/dashboard/cards/PromoCard";
-import UserTable from "@/components/dashboard/user-table";
 import Layout from "@/components/common/layout";
 import React from "react";
 import useAxios from "@/hooks/useAxios";
+import { ACTIVITIES, USERS } from "@/apis/api";
 import { ACTIVITY_CONFIG, USER_CONFIG } from "@/constant/config";
-import { ACTIVITY_API, USERS_API } from "@/apis/api";
+import UserHighlightTable from "@/components/dashboard/table";
 
 const Home = () => {
-  const userData = useAxios(USERS_API, USER_CONFIG);
-  const activityData = useAxios(ACTIVITY_API, ACTIVITY_CONFIG);
+  const userData = useAxios(USERS.GET_ALL_USERS, USER_CONFIG);
+  const activityData = useAxios(ACTIVITIES.GET_ALL_ACTIVITIES, ACTIVITY_CONFIG);
 
   return (
     <Layout>
@@ -65,7 +65,7 @@ const Home = () => {
           ) : userData.error ? (
             <p>Error: {userData.error.message}</p>
           ) : (
-            <UserTable userData={userData.data} />
+            <UserHighlightTable userData={userData.data} />
           )}
         </div>
       </div>

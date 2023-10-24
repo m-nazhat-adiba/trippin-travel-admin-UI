@@ -4,13 +4,14 @@ import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
 import Layout from "@/components/common/layout";
 import React from "react";
 import useAxios from "@/hooks/useAxios";
-import { ACTIVITIES, USERS } from "@/apis/api";
+import { ACTIVITIES, PROMOS, USERS } from "@/apis/api";
 import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import UserHighlightTable from "@/components/dashboard/table";
 
 const Home = () => {
   const userData = useAxios(USERS.GET_ALL_USERS, USER_CONFIG);
   const activityData = useAxios(ACTIVITIES.GET_ALL_ACTIVITIES, GENERAL_CONFIG);
+  const promoData = useAxios(PROMOS.GET_ALL_PROMOS, GENERAL_CONFIG);
 
   return (
     <Layout>
@@ -57,7 +58,13 @@ const Home = () => {
           ) : (
             <ActivityCard activityData={activityData.data.data[0]} />
           )}
-          <PromoHighlight />
+          {promoData.loading ? (
+            <p>Loading...</p>
+          ) : promoData.error ? (
+            <p>Error: {promoData.error.message}</p>
+          ) : (
+            <PromoHighlight data={promoData.data.data[0]} />
+          )}
         </div>
         <div>
           {userData.loading ? (

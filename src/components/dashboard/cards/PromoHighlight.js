@@ -1,8 +1,17 @@
+import imageLoader from "@/utils/imageLoader";
+import Image from "next/image";
 import React from "react";
 
-const PromoHighlight = () => {
+const PromoHighlight = ({ data }) => {
   return (
-    <article className="bg-[url('/promo-bg.png')] w-[654px] h-[290px] overflow-hidden border-[16px] border-white shadow-md rounded-lg"></article>
+    <Image
+      loader={imageLoader}
+      src={data.imageUrl}
+      width={650}
+      height={290}
+      alt="promo"
+      className=" w-[654px] h-[290px] overflow-hidden border-[16px] border-white shadow-md rounded-lg"
+    />
   );
 };
 

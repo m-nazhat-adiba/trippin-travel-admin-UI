@@ -10,7 +10,12 @@ const Activities = () => {
   const activityData = useAxios(ACTIVITIES.GET_ALL_ACTIVITIES, GENERAL_CONFIG);
   return (
     <Layout>
-      <ContentLayout title="Activities" sub="Products" button="Activity">
+      <ContentLayout
+        title="Activities"
+        sub="Products"
+        button={true}
+        buttonText="Activity"
+      >
         <div className="flex flex-col gap-4">
           {activityData.loading ? (
             <p>Loading...</p>

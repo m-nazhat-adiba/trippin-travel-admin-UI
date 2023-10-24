@@ -13,7 +13,8 @@ const Promos = () => {
       <ContentLayout
         title="Promos"
         sub="Discounts, bundles, etc"
-        button="Promo"
+        button={true}
+        buttonText="Promo"
       >
         {promoData.loading ? (
           <p>Loading---</p>

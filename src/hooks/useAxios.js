@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchData } from "@/utils/fetchData";
 
-function useAxios(url, config) {
+function useAxios(method, url, payload, config) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +8,7 @@ function useAxios(url, config) {
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
-        const result = await fetchData(url, config);
+        const result = await method(url, payload, config);
         setData(result);
       } catch (error) {
         setError(error);

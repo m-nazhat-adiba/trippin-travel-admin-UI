@@ -3,15 +3,13 @@ import AnalyticCard from "@/components/dashboard/cards/AnalyticCard";
 import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
 import Layout from "@/components/common/layout";
 import React from "react";
-import useAxios from "@/hooks/useAxios";
-import { ACTIVITIES, PROMOS, USERS } from "@/apis/api";
-import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import UserHighlightTable from "@/components/dashboard/table";
+import { activityService, promoService, userService } from "@/apis";
 
 const Home = () => {
-  const userData = useAxios(USERS.GET_ALL_USERS, USER_CONFIG);
-  const activityData = useAxios(ACTIVITIES.GET_ALL_ACTIVITIES, GENERAL_CONFIG);
-  const promoData = useAxios(PROMOS.GET_ALL_PROMOS, GENERAL_CONFIG);
+  const userData = userService.getUserList();
+  const activityData = activityService.getActivityList();
+  const promoData = promoService.getPromoList();
 
   return (
     <Layout>

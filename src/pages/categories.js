@@ -1,13 +1,12 @@
-import { CATEGORIES } from "@/apis/api";
 import Category from "@/components/category/card/Category";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
-import { GENERAL_CONFIG } from "@/constant/config";
-import useAxios from "@/hooks/useAxios";
 import React from "react";
+import { categoryService } from "@/apis";
 
 const Categories = () => {
-  const categoryData = useAxios(CATEGORIES.GET_ALL_CATEGORES, GENERAL_CONFIG);
+  const categoryData = categoryService.getCategoryList();
+
   return (
     <Layout>
       <ContentLayout

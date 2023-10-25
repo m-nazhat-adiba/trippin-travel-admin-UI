@@ -1,8 +1,42 @@
 import InputField from "@/components/common/input/InputField";
+import { AUTH } from "@/constant/api";
+import { GENERAL_CONFIG } from "@/constant/config";
+import useInput from "@/hooks/useInput";
+import { postData } from "@/utils/fetchData";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 const Login = () => {
+  const emailHook = useInput();
+  const passwordHook = useInput();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const payload = {
+      email: emailHook.data,
+      password: passwordHook.data,
+    };
+    try {
+      const result = await axios.post(AUTH.LOGIN, payload, GENERAL_CONFIG);
+      setData(result.data);
+      localStorage.setItem("token", result.data.token);
+      router.push("/");
+    } catch (error) {
+      setError(error);
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="flex flex-col w-screen h-screen justify-center gap-14">
       <Image
@@ -17,14 +51,24 @@ const Login = () => {
         <h1 className="text-4xl font-bold text-white">Welcome!</h1>
         <p className="text-white">Login with your admin account</p>
       </header>
-      <form className="flex flex-col h-[580px] bg-white w-[400px] mx-auto px-12 py-10 rounded-lg shadow-lg gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col h-[580px] bg-white w-[400px] mx-auto px-12 py-10 rounded-lg shadow-lg gap-4"
+      >
         <h2 className="text-center text-lg font-bold">Login</h2>
         <div className="flex flex-col flex-grow gap-5 py-5">
-          <InputField placeholder="Email" label="Email" />
-          <InputField placeholder="Password" label="Password" />
+          <InputField inputHook={emailHook} placeholder="Email" label="Email" />
+          <InputField
+            inputHook={passwordHook}
+            placeholder="Password"
+            label="Password"
+          />
         </div>
 
-        <button className="w-full py-4 bg-[#4FD1C5] rounded-lg font-bold text-white">
+        <button
+          type="submit"
+          className="w-full py-4 bg-[#4FD1C5] rounded-lg font-bold text-white"
+        >
           Login
         </button>
         <nav className="flex gap-1 justify-center text-gray-500 text-sm text-center">

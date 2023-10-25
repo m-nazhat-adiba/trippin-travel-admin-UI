@@ -1,13 +1,12 @@
 import Layout from "@/components/common/layout";
 import React from "react";
 import ContentLayout from "@/components/common/layout/content";
-import useAxios from "@/hooks/useAxios";
-import { PROMOS } from "@/apis/api";
-import { GENERAL_CONFIG } from "@/constant/config";
 import PromoCard from "@/components/promos/card/PromoCard";
+import { promoService } from "@/apis";
 
 const Promos = () => {
-  const promoData = useAxios(PROMOS.GET_ALL_PROMOS, GENERAL_CONFIG);
+  const promoData = promoService.getPromoList();
+
   return (
     <Layout>
       <ContentLayout

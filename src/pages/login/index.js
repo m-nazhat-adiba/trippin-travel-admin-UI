@@ -2,12 +2,12 @@ import InputField from "@/components/common/input/InputField";
 import { AUTH } from "@/constant/api";
 import { GENERAL_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
-import { postData } from "@/utils/fetchData";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import Spinner from "@/components/common/spinner";
 
 const Login = () => {
   const emailHook = useInput();
@@ -66,10 +66,11 @@ const Login = () => {
         </div>
 
         <button
+          disabled={loading ? true : false}
           type="submit"
-          className="w-full py-4 bg-[#4FD1C5] rounded-lg font-bold text-white"
+          className="w-full py-4 bg-[#4FD1C5] rounded-lg font-bold text-white disabled:bg-gray-300"
         >
-          Login
+          {loading ? <Spinner className="w-7 h-7" /> : <p>Login</p>}
         </button>
         <nav className="flex gap-1 justify-center text-gray-500 text-sm text-center">
           Doesn't have an account?

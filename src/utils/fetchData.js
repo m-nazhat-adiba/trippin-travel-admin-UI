@@ -17,3 +17,12 @@ export const postData = async (url, payload, config) => {
     throw new Error(error);
   }
 };
+
+export const deleteData = async (url, config) => {
+  try {
+    const response = await axios.delete(url, config);
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

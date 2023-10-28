@@ -2,7 +2,11 @@ import clsx from "clsx";
 import React from "react";
 import { Icon } from "@iconify/react";
 
-const UserTableRow = ({ data, handleModal }) => {
+const UserTableRow = ({ data, handleModal, setData }) => {
+  const handleModalAndIdGetter = () => {
+    handleModal();
+    setData(data.id);
+  };
   return (
     <tr className="border-b dark:border-neutral-300">
       <td className="whitespace-nowrap flex items-center gap-2 px-6 py-4">
@@ -27,7 +31,7 @@ const UserTableRow = ({ data, handleModal }) => {
       </td>
       <td className="whitespace-nowrap px-3 py-4">
         <div className="flex text-2xl gap-4 justify-center">
-          <Icon onClick={handleModal} icon="akar-icons:edit" />
+          <Icon onClick={handleModalAndIdGetter} icon="akar-icons:edit" />
           <Icon icon="akar-icons:trash-can" className="text-red-700" />
         </div>
       </td>

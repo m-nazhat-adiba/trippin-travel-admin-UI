@@ -1,7 +1,7 @@
 import React from "react";
 import UserTableRow from "./container/UserTableRow";
 
-const UserTable = ({ userData, handleModal }) => {
+const UserTable = ({ userData, handleModal, setData }) => {
   return (
     <div className="flex flex-col bg-white w-full">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -28,6 +28,7 @@ const UserTable = ({ userData, handleModal }) => {
               <tbody>
                 {userData.data.map((item, key) => (
                   <UserTableRow
+                    setData={setData}
                     handleModal={handleModal}
                     data={item}
                     key={key}

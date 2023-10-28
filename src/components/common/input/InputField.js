@@ -13,8 +13,9 @@ const InputField = ({
       <div className="flex flex-col gap-1">
         <label>{label}</label>
         <input
+          value={inputProps.data}
           placeholder={placeholder}
-          {...inputProps}
+          onChange={inputProps.onChange}
           className={`border-2 border-gray-300 rounded-xl px-2 py-3`}
         />
       </div>

@@ -14,6 +14,7 @@ const Categories = () => {
         buttonText="Category"
         title="Categories"
         sub="Tags"
+        target="/categories/add"
       >
         <div className="grid grid-cols-4 gap-6 px-5">
           {categoryData.loading ? (

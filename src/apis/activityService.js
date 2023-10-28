@@ -13,4 +13,13 @@ function getActivityList() {
   return activityList;
 }
 
-export { getActivityList };
+function getActivityById(id) {
+  const activityData = useAxios(
+    getData,
+    `${ACTIVITIES.GET_BY_ID}${id}`,
+    GENERAL_CONFIG
+  );
+  return activityData;
+}
+
+export { getActivityList, getActivityById };

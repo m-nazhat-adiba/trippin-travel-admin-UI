@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
-function useInput() {
-  const [data, setData] = useState("");
+function useInput(value = null) {
+  const [data, setData] = useState(value);
   const handleChange = (e) => {
+    e.preventDefault();
     setData(e.target.value);
   };
 

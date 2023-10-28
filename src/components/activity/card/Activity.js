@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { ACTIVITIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import { deleteData } from "@/utils/fetchData";
+import Button from "@/components/common/button";
 
 const Activity = ({ data, showModal }) => {
   const [response, setResponse] = useState();
@@ -54,16 +55,11 @@ const Activity = ({ data, showModal }) => {
         </div>
         <div className="flex gap-2 mt-3">
           <Link href={`/activities/${data.id}`}>
-            <button className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold">
-              Edit
-            </button>
+            <Button variant="primary">Edit</Button>
           </Link>
-          <button
-            onClick={handleDelete}
-            className="py-2 px-4 border-2 border-gray-300 rounded-lg"
-          >
+          <Button variant="secondary" handleClick={handleDelete}>
             Delete
-          </button>
+          </Button>
         </div>
       </div>
       <Image

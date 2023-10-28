@@ -10,6 +10,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SelectInput from "@/components/common/input/SelectInput";
 import { categoryService } from "@/apis";
+import Button from "@/components/common/button";
+import Link from "next/link";
 
 const EditActivity = () => {
   const categoryHook = useInput();
@@ -185,16 +187,16 @@ const EditActivity = () => {
           )}
 
           <div className="flex gap-2 px-5">
-            <button
-              disabled={loadingPost ? true : false}
+            <Button
+              disable={loadingPost ? true : false}
               type="submit"
-              className=" px-6 py-2 bg-[#4FD1C5] rounded-lg font-bold text-white disabled:bg-gray-300"
+              variant="primary"
             >
               {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
-            </button>
-            <button className="py-2 px-4 border-2 border-gray-300 rounded-lg">
-              Cancel
-            </button>
+            </Button>
+            <Link href={"/activities"}>
+              <Button variant="secondary">Cancel</Button>
+            </Link>
           </div>
         </form>
       </ContentLayout>

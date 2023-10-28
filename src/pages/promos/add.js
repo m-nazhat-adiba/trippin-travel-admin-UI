@@ -8,6 +8,7 @@ import { PROMOS } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import Modal from "@/components/common/modal";
 import Link from "next/link";
+import Button from "@/components/common/button";
 
 const AddPromo = () => {
   const [showModal, setShowModal] = useState(false);
@@ -109,19 +110,11 @@ const AddPromo = () => {
             </div>
           </div>
           <div className="flex gap-2 px-5">
-            <button
-              type="submit"
-              className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold"
-            >
+            <Button type="submit" variant="primary">
               Save
-            </button>
+            </Button>
             <Link href={"/promos"}>
-              <button
-                type="button"
-                className="py-2 px-4 border-2 border-gray-300 rounded-lg"
-              >
-                Cancel
-              </button>
+              <Button variant="secondary">Cancel</Button>
             </Link>
           </div>
         </form>

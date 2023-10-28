@@ -8,6 +8,7 @@ import { CATEGORIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Button from "@/components/common/button";
 
 const EditCategory = () => {
   const router = useRouter();
@@ -65,19 +66,15 @@ const EditCategory = () => {
             </div>
           </div>
           <div className="flex gap-2 px-5">
-            <button
+            <Button
+              disable={loadingPost ? true : false}
               type="submit"
-              className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold"
+              variant="primary"
             >
-              Save
-            </button>
+              {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
+            </Button>
             <Link href={"/categories"}>
-              <button
-                type="button"
-                className="py-2 px-4 border-2 border-gray-300 rounded-lg"
-              >
-                Cancel
-              </button>
+              <Button variant="secondary">Cancel</Button>
             </Link>
           </div>
         </form>

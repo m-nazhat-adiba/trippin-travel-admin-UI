@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { deleteData } from "@/utils/fetchData";
 import { CATEGORIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
+import Button from "@/components/common/button";
 
 const Category = ({ data }) => {
   const [response, setResponse] = useState();
@@ -40,16 +41,11 @@ const Category = ({ data }) => {
         </div>
         <div className="flex gap-2 mt-3">
           <Link href={`/categories/${data.id}`}>
-            <button className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold">
-              Edit
-            </button>
+            <Button variant="primary">Edit</Button>
           </Link>
-          <button
-            onClick={handleDelete}
-            className="py-2 px-4 border-2 border-gray-300 rounded-lg"
-          >
+          <Button variant="secondary" handleClick={handleDelete}>
             Delete
-          </button>
+          </Button>
         </div>
       </div>
     </div>

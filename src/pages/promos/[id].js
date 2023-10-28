@@ -7,6 +7,8 @@ import { postData } from "@/utils/fetchData";
 import { PROMOS } from "@/constant/api";
 import { useRouter } from "next/router";
 import { USER_CONFIG } from "@/constant/config";
+import Button from "@/components/common/button";
+import Link from "next/link";
 
 const EditPromo = () => {
   const router = useRouter();
@@ -105,18 +107,16 @@ const EditPromo = () => {
             </div>
           </div>
           <div className="flex gap-2 px-5">
-            <button
+            <Button
+              disable={loadingPost ? true : false}
               type="submit"
-              className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold"
+              variant="primary"
             >
-              Save
-            </button>
-            <button
-              type="button"
-              className="py-2 px-4 border-2 border-gray-300 rounded-lg"
-            >
-              Cancel
-            </button>
+              {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
+            </Button>
+            <Link href={"/promos"}>
+              <Button variant="secondary">Cancel</Button>
+            </Link>
           </div>
         </form>
       </ContentLayout>

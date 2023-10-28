@@ -16,6 +16,8 @@ export const ACTIVITIES = {
 export const PROMOS = {
   GET_ALL_PROMOS: `${BASE_URL}/api/v1/promos`,
   CREATE: `${BASE_URL}/api/v1/create-promo`,
+  UPDATE: `${BASE_URL}/api/v1/update-promo/`,
+  DELETE: `${BASE_URL}/api/v1/delete-promo/`,
 };
 
 export const CATEGORIES = {

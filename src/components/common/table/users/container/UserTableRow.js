@@ -32,7 +32,7 @@ const UserTableRow = ({ data, handleModal, setData }) => {
       <td className="whitespace-nowrap px-3 py-4">
         <div className="flex text-2xl gap-4 justify-center">
           <Icon onClick={handleModalAndIdGetter} icon="akar-icons:edit" />
-          <Icon icon="akar-icons:trash-can" className="text-red-700" />
+          {/* <Icon icon="akar-icons:trash-can" className="text-red-700" /> */}
         </div>
       </td>
     </tr>

@@ -14,6 +14,7 @@ const Promos = () => {
         sub="Discounts, bundles, etc"
         button={true}
         buttonText="Promo"
+        target="/promos/add"
       >
         {promoData.loading ? (
           <p>Loading---</p>

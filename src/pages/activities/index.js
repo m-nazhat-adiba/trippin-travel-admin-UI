@@ -20,6 +20,7 @@ const Activities = () => {
         sub="Products"
         button={true}
         buttonText="Activity"
+        target="/activities/add"
       >
         {showModal ? (
           <Modal handleModal={handleEditModal} title="Notification">

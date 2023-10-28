@@ -1,5 +1,6 @@
 import imageLoader from "@/utils/imageLoader";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Activity = ({ data }) => {
@@ -14,7 +15,7 @@ const Activity = ({ data }) => {
             {data.title}
             <span className="text-yellow-500 mx-1">{data.rating}☆</span>
           </h1>
-          <p className="w-1/2 py-2 text-gray-500">{data.description}</p>
+          <p className="w-[90%] py-2 text-gray-500">{data.description}</p>
         </header>
 
         <div className="flex flex-col">
@@ -34,9 +35,11 @@ const Activity = ({ data }) => {
           </div>
         </div>
         <div className="flex gap-2 mt-3">
-          <button className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold">
-            Edit
-          </button>
+          <Link href={`/activities/${data.id}`}>
+            <button className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold">
+              Edit
+            </button>
+          </Link>
           <button className="py-2 px-4 border-2 border-gray-300 rounded-lg">
             Delete
           </button>

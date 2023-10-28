@@ -22,6 +22,9 @@ export const PROMOS = {
 
 export const CATEGORIES = {
   GET_ALL_CATEGORES: `${BASE_URL}/api/v1/categories`,
+  UPDATE: `${BASE_URL}/api/v1/update-category/`,
+  CREATE: `${BASE_URL}/api/v1/create-category`,
+  DELETE: `${BASE_URL}/api/v1/delete-category/`,
 };
 
 export const AUTH = {

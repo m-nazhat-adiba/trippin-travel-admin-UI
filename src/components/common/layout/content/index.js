@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const ContentLayout = ({
   children,
@@ -7,6 +8,7 @@ const ContentLayout = ({
   buttonText,
   title,
   sub,
+  target = "",
 }) => {
   return (
     <div className="w-full flex flex-col bg-white shadow-md py-4 rounded-lg gap-3">
@@ -16,10 +18,12 @@ const ContentLayout = ({
           <p className="text-gray-500 text-sm">{sub}</p>
         </div>
         {button ? (
-          <button className="flex gap-2 items-center px-3">
-            <Icon icon="akar-icons:plus" className="text-lg" />
-            <p>Create a New {buttonText}</p>
-          </button>
+          <Link href={target}>
+            <button className="flex gap-2 items-center px-3">
+              <Icon icon="akar-icons:plus" className="text-lg" />
+              <p>Create a New {buttonText}</p>
+            </button>
+          </Link>
         ) : null}
       </header>
       {children}

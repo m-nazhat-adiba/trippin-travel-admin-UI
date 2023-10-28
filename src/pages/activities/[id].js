@@ -12,6 +12,7 @@ import SelectInput from "@/components/common/input/SelectInput";
 import { categoryService } from "@/apis";
 
 const EditActivity = () => {
+  const categoryHook = useInput();
   const titleHook = useInput();
   const addressHook = useInput();
   const cityHook = useInput();
@@ -105,7 +106,10 @@ const EditActivity = () => {
                 ) : categoryData.error ? (
                   console.log(categoryData.error)
                 ) : (
-                  <SelectInput data={categoryData.data?.data} />
+                  <SelectInput
+                    data={categoryData.data?.data}
+                    inputHook={categoryHook}
+                  />
                 )}
                 <InputField
                   className="col-span-2"

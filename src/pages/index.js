@@ -4,12 +4,18 @@ import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
 import Layout from "@/components/common/layout";
 import React from "react";
 import UserHighlightTable from "@/components/dashboard/table";
-import { activityService, promoService, userService } from "@/apis";
+import {
+  activityService,
+  categoryService,
+  promoService,
+  userService,
+} from "@/apis";
 
 const Home = () => {
   const userData = userService.getUserList();
   const activityData = activityService.getActivityList();
   const promoData = promoService.getPromoList();
+  const categoryData = categoryService.getCategoryList();
 
   return (
     <Layout>
@@ -31,20 +37,20 @@ const Home = () => {
             <AnalyticCard data={userData.data.data} title="Users Data" />
           )}
 
-          {userData.loading ? (
+          {promoData.loading ? (
             <p>Loading...</p>
-          ) : userData.error ? (
-            <p>Error: {userData.error.message}</p>
+          ) : promoData.error ? (
+            <p>Error: {promoData.error.message}</p>
           ) : (
-            <AnalyticCard data={userData.data.data} />
+            <AnalyticCard data={promoData.data.data} title="Promo Data" />
           )}
 
-          {userData.loading ? (
+          {categoryData.loading ? (
             <p>Loading...</p>
-          ) : userData.error ? (
-            <p>Error: {userData.error.message}</p>
+          ) : categoryData.error ? (
+            <p>Error: {categoryData.error.message}</p>
           ) : (
-            <AnalyticCard data={userData.data.data} />
+            <AnalyticCard data={categoryData.data.data} title="Category Data" />
           )}
         </div>
 

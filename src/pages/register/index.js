@@ -74,17 +74,19 @@ const Register = () => {
               label="Email"
             />
             <InputField
+              type="password"
               inputHook={passwordHook}
               placeholder="Password"
               label="Password"
             />
             <InputField
+              type="password"
               inputHook={password2Hook}
               placeholder="Confirm Password"
               label="Password Confirmation"
             />
           </div>
-
+          {error ? <p>{error.message}</p> : data ? <p>Success</p> : null}
           <button
             disabled={loading ? true : false}
             type="submit"

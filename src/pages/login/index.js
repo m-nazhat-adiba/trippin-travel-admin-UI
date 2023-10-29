@@ -66,12 +66,13 @@ const Login = () => {
               label="Email"
             />
             <InputField
+              type="password"
               inputHook={passwordHook}
               placeholder="Password"
               label="Password"
             />
           </div>
-
+          {error ? <p>{error.message}</p> : data ? <p>Success</p> : null}
           <button
             disabled={loading ? true : false}
             type="submit"

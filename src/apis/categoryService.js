@@ -3,7 +3,7 @@ const { GENERAL_CONFIG } = require("@/constant/config");
 const { default: useAxios } = require("@/hooks/useAxios");
 const { getData } = require("@/utils/fetchData");
 
-function getCategoryList() {
+function GetCategoryList() {
   const categoryList = useAxios(
     getData,
     CATEGORIES.GET_ALL_CATEGORES,
@@ -13,4 +13,4 @@ function getCategoryList() {
   return categoryList;
 }
 
-export { getCategoryList };
+export { GetCategoryList };

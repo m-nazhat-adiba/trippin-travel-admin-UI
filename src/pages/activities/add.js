@@ -32,7 +32,7 @@ const AddActivity = () => {
   const imageUrlHook = useInput();
   const descHook = useInput();
 
-  const categoryData = categoryService.getCategoryList();
+  const categoryData = categoryService.GetCategoryList();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoadingPost(true);

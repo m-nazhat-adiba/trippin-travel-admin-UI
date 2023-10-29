@@ -7,7 +7,7 @@ import ContentLayout from "@/components/common/layout/content";
 import ScreenLock from "@/components/common/screen";
 
 const Categories = () => {
-  const categoryData = categoryService.getCategoryList();
+  const categoryData = categoryService.GetCategoryList();
 
   return (
     <>

@@ -4,10 +4,10 @@ import { getData } from "@/utils/fetchData";
 
 import { USERS } from "../constant/api";
 
-function getUserList() {
+function GetUserList() {
   const userList = useAxios(getData, USERS.GET_ALL_USERS, USER_CONFIG);
 
   return userList;
 }
 
-export { getUserList };
+export { GetUserList };

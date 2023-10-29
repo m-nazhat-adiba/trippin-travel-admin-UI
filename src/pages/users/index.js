@@ -13,7 +13,7 @@ import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 
 const Users = () => {
-  const userData = userService.getUserList();
+  const userData = userService.GetUserList();
   const roleHook = useInput();
   const [showModal, setShowModal] = useState(false);
   const [dataPost, setDataPost] = useState();

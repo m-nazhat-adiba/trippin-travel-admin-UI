@@ -9,7 +9,7 @@ import ScreenLock from "@/components/common/screen";
 
 const Activities = () => {
   const [showModal, setShowModal] = useState(false);
-  const activityData = activityService.getActivityList();
+  const activityData = activityService.GetActivityList();
 
   const handleEditModal = () => {
     setShowModal(!showModal);

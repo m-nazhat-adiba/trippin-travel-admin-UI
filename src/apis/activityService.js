@@ -3,7 +3,7 @@ const { GENERAL_CONFIG } = require("@/constant/config");
 const { default: useAxios } = require("@/hooks/useAxios");
 const { getData } = require("@/utils/fetchData");
 
-function getActivityList() {
+function GetActivityList() {
   const activityList = useAxios(
     getData,
     ACTIVITIES.GET_ALL_ACTIVITIES,
@@ -13,7 +13,7 @@ function getActivityList() {
   return activityList;
 }
 
-function getActivityById(id) {
+function GetActivityById(id) {
   const activityData = useAxios(
     getData,
     `${ACTIVITIES.GET_BY_ID}${id}`,
@@ -22,4 +22,4 @@ function getActivityById(id) {
   return activityData;
 }
 
-export { getActivityById,getActivityList };
+export { GetActivityById, GetActivityList };

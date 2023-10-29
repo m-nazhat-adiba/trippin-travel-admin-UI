@@ -14,10 +14,10 @@ import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
 import UserHighlightTable from "@/components/dashboard/table";
 
 const Home = () => {
-  const userData = userService.getUserList();
-  const activityData = activityService.getActivityList();
-  const promoData = promoService.getPromoList();
-  const categoryData = categoryService.getCategoryList();
+  const userData = userService.GetUserList();
+  const activityData = activityService.GetActivityList();
+  const promoData = promoService.GetPromoList();
+  const categoryData = categoryService.GetCategoryList();
 
   return (
     <>

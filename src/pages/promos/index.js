@@ -7,7 +7,7 @@ import ScreenLock from "@/components/common/screen";
 import PromoCard from "@/components/promos/card/PromoCard";
 
 const Promos = () => {
-  const promoData = promoService.getPromoList();
+  const promoData = promoService.GetPromoList();
 
   return (
     <>

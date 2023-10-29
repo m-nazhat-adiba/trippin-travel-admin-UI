@@ -89,7 +89,7 @@ const EditActivity = () => {
     }
   }, [id]);
 
-  const categoryData = categoryService.getCategoryList();
+  const categoryData = categoryService.GetCategoryList();
   const activityData = { data, error, loading };
 
   return (

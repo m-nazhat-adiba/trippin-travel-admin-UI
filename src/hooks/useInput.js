@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function useInput(value = null) {
   const [data, setData] = useState(value);

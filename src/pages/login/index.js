@@ -1,14 +1,15 @@
-import InputField from "@/components/common/input/InputField";
-import { AUTH } from "@/constant/api";
-import { GENERAL_CONFIG } from "@/constant/config";
-import useInput from "@/hooks/useInput";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import Spinner from "@/components/common/spinner";
+import React, { useState } from "react";
+
+import InputField from "@/components/common/input/InputField";
 import ScreenLock from "@/components/common/screen";
+import Spinner from "@/components/common/spinner";
+import { AUTH } from "@/constant/api";
+import { GENERAL_CONFIG } from "@/constant/config";
+import useInput from "@/hooks/useInput";
 
 const Login = () => {
   const emailHook = useInput();
@@ -32,7 +33,6 @@ const Login = () => {
       router.push("/");
     } catch (error) {
       setError(error);
-      console.log(error);
     } finally {
       setLoading(false);
     }

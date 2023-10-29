@@ -1,12 +1,13 @@
-import React, { useState } from "react";
 import Image from "next/image";
-import imageLoader from "@/utils/imageLoader";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { deleteData } from "@/utils/fetchData";
+import React, { useState } from "react";
+
+import Button from "@/components/common/button";
 import { CATEGORIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
-import Button from "@/components/common/button";
+import { deleteData } from "@/utils/fetchData";
+import imageLoader from "@/utils/imageLoader";
 
 const Category = ({ data }) => {
   const [response, setResponse] = useState();

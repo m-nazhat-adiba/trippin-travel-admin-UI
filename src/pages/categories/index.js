@@ -1,8 +1,9 @@
+import React from "react";
+
+import { categoryService } from "@/apis";
 import Category from "@/components/category/card/Category";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
-import React from "react";
-import { categoryService } from "@/apis";
 import ScreenLock from "@/components/common/screen";
 
 const Categories = () => {

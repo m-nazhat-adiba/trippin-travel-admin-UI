@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import InputField from "@/components/common/input/InputField";
-import Link from "next/link";
-import useInput from "@/hooks/useInput";
-import { useRouter } from "next/router";
-import { AUTH } from "@/constant/api";
 import axios from "axios";
-import { GENERAL_CONFIG } from "@/constant/config";
-import Spinner from "@/components/common/spinner";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+
+import InputField from "@/components/common/input/InputField";
 import ScreenLock from "@/components/common/screen";
+import Spinner from "@/components/common/spinner";
+import { AUTH } from "@/constant/api";
+import { GENERAL_CONFIG } from "@/constant/config";
+import useInput from "@/hooks/useInput";
 
 const Register = () => {
   const emailHook = useInput();
@@ -39,7 +40,6 @@ const Register = () => {
       router.push("/login");
     } catch (error) {
       setError(error);
-      console.log(error);
     } finally {
       setLoading(false);
     }

@@ -1,17 +1,18 @@
+import axios from "axios";
+import Link from "next/link";
+import React, { useState } from "react";
+
+import { categoryService } from "@/apis";
+import Button from "@/components/common/button";
 import InputField from "@/components/common/input/InputField";
+import SelectInput from "@/components/common/input/SelectInput";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
-import useInput from "@/hooks/useInput";
+import ScreenLock from "@/components/common/screen";
 import Spinner from "@/components/common/spinner";
-import SelectInput from "@/components/common/input/SelectInput";
-import React, { useState } from "react";
-import axios from "axios";
-import { categoryService } from "@/apis";
 import { ACTIVITIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
-import Button from "@/components/common/button";
-import Link from "next/link";
-import ScreenLock from "@/components/common/screen";
+import useInput from "@/hooks/useInput";
 
 const AddActivity = () => {
   const [dataPost, setDataPost] = useState(null);
@@ -56,7 +57,6 @@ const AddActivity = () => {
       setDataPost(result.data);
     } catch (error) {
       setErrorPost(error);
-      console.log(error);
     } finally {
       setLoadingPost(false);
     }
@@ -73,8 +73,8 @@ const AddActivity = () => {
                 {categoryData.loading ? (
                   <Spinner />
                 ) : categoryData.error ? (
-                  console.log(categoryData.error)
-                ) : (
+                  <p>{categoryData.error}</p>
+                  ) : (
                   <SelectInput
                     inputHook={categoryHook}
                     data={categoryData.data?.data}

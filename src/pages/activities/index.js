@@ -1,8 +1,9 @@
+import React, { useState } from "react";
+
+import { activityService } from "@/apis";
 import Activity from "@/components/activity/card/Activity";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
-import React, { useState } from "react";
-import { activityService } from "@/apis";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
 

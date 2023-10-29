@@ -1,11 +1,12 @@
-import React, { useState } from "react";
 import Image from "next/image";
-import imageLoader from "@/utils/imageLoader";
 import Link from "next/link";
-import { deleteData } from "@/utils/fetchData";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+
 import { PROMOS } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
-import { useRouter } from "next/router";
+import { deleteData } from "@/utils/fetchData";
+import imageLoader from "@/utils/imageLoader";
 
 const PromoCard = ({ data }) => {
   const [response, setResponse] = useState();

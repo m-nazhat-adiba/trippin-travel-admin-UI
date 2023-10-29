@@ -22,4 +22,4 @@ function getActivityById(id) {
   return activityData;
 }
 
-export { getActivityList, getActivityById };
+export { getActivityById,getActivityList };

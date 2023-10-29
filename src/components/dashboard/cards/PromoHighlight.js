@@ -1,6 +1,7 @@
-import imageLoader from "@/utils/imageLoader";
 import Image from "next/image";
 import React from "react";
+
+import imageLoader from "@/utils/imageLoader";
 
 const PromoHighlight = ({ data }) => {
   return (

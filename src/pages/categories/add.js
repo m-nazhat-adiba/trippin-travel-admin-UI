@@ -1,15 +1,16 @@
+import Link from "next/link";
 import React, { useState } from "react";
+
+import Button from "@/components/common/button";
+import InputField from "@/components/common/input/InputField";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
-import InputField from "@/components/common/input/InputField";
-import useInput from "@/hooks/useInput";
-import { postData } from "@/utils/fetchData";
+import Modal from "@/components/common/modal";
+import ScreenLock from "@/components/common/screen";
 import { CATEGORIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
-import Link from "next/link";
-import Modal from "@/components/common/modal";
-import Button from "@/components/common/button";
-import ScreenLock from "@/components/common/screen";
+import useInput from "@/hooks/useInput";
+import { postData } from "@/utils/fetchData";
 
 const AddCategory = () => {
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +35,6 @@ const AddCategory = () => {
       setShowModal(true);
     } catch (error) {
       setErrorPost(error);
-      console.log(error);
     } finally {
       setLoadingPost(false);
     }

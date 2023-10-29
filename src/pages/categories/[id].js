@@ -1,15 +1,17 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+
+import Button from "@/components/common/button";
+import InputField from "@/components/common/input/InputField";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
-import InputField from "@/components/common/input/InputField";
-import useInput from "@/hooks/useInput";
-import { postData } from "@/utils/fetchData";
+import ScreenLock from "@/components/common/screen";
+import Spinner from "@/components/common/spinner";
 import { CATEGORIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import Button from "@/components/common/button";
-import ScreenLock from "@/components/common/screen";
+import useInput from "@/hooks/useInput";
+import { postData } from "@/utils/fetchData";
 
 const EditCategory = () => {
   const router = useRouter();
@@ -38,7 +40,6 @@ const EditCategory = () => {
       setDataPost(result.data);
     } catch (error) {
       setErrorPost(error);
-      console.log(error);
     } finally {
       setLoadingPost(false);
     }

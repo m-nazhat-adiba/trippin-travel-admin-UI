@@ -1,16 +1,17 @@
-import ActivityCard from "@/components/dashboard/cards/ActivityCard";
-import AnalyticCard from "@/components/dashboard/cards/AnalyticCard";
-import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
-import Layout from "@/components/common/layout";
 import React from "react";
-import UserHighlightTable from "@/components/dashboard/table";
+
 import {
   activityService,
   categoryService,
   promoService,
   userService,
 } from "@/apis";
+import Layout from "@/components/common/layout";
 import ScreenLock from "@/components/common/screen";
+import ActivityCard from "@/components/dashboard/cards/ActivityCard";
+import AnalyticCard from "@/components/dashboard/cards/AnalyticCard";
+import PromoHighlight from "@/components/dashboard/cards/PromoHighlight";
+import UserHighlightTable from "@/components/dashboard/table";
 
 const Home = () => {
   const userData = userService.getUserList();

@@ -1,9 +1,10 @@
-import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import clsx from "clsx";
-import usePath from "@/hooks/usePath";
 import { Icon } from "@iconify/react";
+import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+import usePath from "@/hooks/usePath";
 
 const SideBar = () => {
   const path = usePath();

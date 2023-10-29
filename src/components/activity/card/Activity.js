@@ -1,11 +1,12 @@
-import imageLoader from "@/utils/imageLoader";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+
+import Button from "@/components/common/button";
 import { ACTIVITIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import { deleteData } from "@/utils/fetchData";
-import Button from "@/components/common/button";
+import imageLoader from "@/utils/imageLoader";
 
 const Activity = ({ data, showModal }) => {
   const [response, setResponse] = useState();

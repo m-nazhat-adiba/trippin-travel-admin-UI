@@ -1,16 +1,16 @@
-import Layout from "@/components/common/layout";
-import React, { useEffect, useState } from "react";
-import UserTable from "@/components/common/table/users";
-import ContentLayout from "@/components/common/layout/content";
+import React, { useState } from "react";
+
 import { userService } from "@/apis";
+import SelectInput from "@/components/common/input/SelectInput";
+import Layout from "@/components/common/layout";
+import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
-import InputField from "@/components/common/input/InputField";
+import ScreenLock from "@/components/common/screen";
+import UserTable from "@/components/common/table/users";
+import { USERS } from "@/constant/api";
+import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
-import { USERS } from "@/constant/api";
-import SelectInput from "@/components/common/input/SelectInput";
-import { USER_CONFIG } from "@/constant/config";
-import ScreenLock from "@/components/common/screen";
 
 const Users = () => {
   const userData = userService.getUserList();
@@ -43,16 +43,10 @@ const Users = () => {
       setDataPost(result.data);
     } catch (error) {
       setErrorPost(error);
-      console.log(errorPost);
     } finally {
       setLoadingPost(false);
     }
   };
-
-  useEffect(() => {
-    console.log("id", userId);
-    console.log("role", roleHook.data);
-  }, [userId, roleHook.data]);
 
   return (
     <>

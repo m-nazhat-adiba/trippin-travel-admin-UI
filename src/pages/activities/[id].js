@@ -1,18 +1,19 @@
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
+import { categoryService } from "@/apis";
+import Button from "@/components/common/button";
 import InputField from "@/components/common/input/InputField";
+import SelectInput from "@/components/common/input/SelectInput";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
+import ScreenLock from "@/components/common/screen";
 import Spinner from "@/components/common/spinner";
 import { ACTIVITIES } from "@/constant/api";
 import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import SelectInput from "@/components/common/input/SelectInput";
-import { categoryService } from "@/apis";
-import Button from "@/components/common/button";
-import Link from "next/link";
-import ScreenLock from "@/components/common/screen";
 
 const EditActivity = () => {
   const categoryHook = useInput();
@@ -44,7 +45,6 @@ const EditActivity = () => {
       setData(result.data);
     } catch (error) {
       setError(error);
-      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -78,7 +78,6 @@ const EditActivity = () => {
       router.push("/activities");
     } catch (error) {
       setErrorPost(error);
-      console.log(error);
     } finally {
       setLoadingPost(false);
     }
@@ -102,15 +101,15 @@ const EditActivity = () => {
             {activityData.loading ? (
               <Spinner />
             ) : activityData.error ? (
-              console.log(activityData.error)
+              <p>{activityData.error}</p>
             ) : (
               <div className="flex flex-col gap-7 my-2">
                 <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
                   {categoryData.loading ? (
                     <Spinner />
                   ) : categoryData.error ? (
-                    console.log(categoryData.error)
-                  ) : (
+                    <p>{categoryData.error}</p>
+                    ) : (
                     <SelectInput
                       data={categoryData.data?.data}
                       inputHook={categoryHook}

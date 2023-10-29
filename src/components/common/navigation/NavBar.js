@@ -1,5 +1,6 @@
-import React from "react";
 import { Icon } from "@iconify/react";
+import React from "react";
+
 import usePath from "@/hooks/usePath";
 
 const NavBar = () => {

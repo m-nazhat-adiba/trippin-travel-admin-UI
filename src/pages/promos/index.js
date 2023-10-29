@@ -1,9 +1,10 @@
-import Layout from "@/components/common/layout";
 import React from "react";
-import ContentLayout from "@/components/common/layout/content";
-import PromoCard from "@/components/promos/card/PromoCard";
+
 import { promoService } from "@/apis";
+import Layout from "@/components/common/layout";
+import ContentLayout from "@/components/common/layout/content";
 import ScreenLock from "@/components/common/screen";
+import PromoCard from "@/components/promos/card/PromoCard";
 
 const Promos = () => {
   const promoData = promoService.getPromoList();

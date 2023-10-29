@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
 
 function useAxios(method, url, payload, config) {
   const [data, setData] = useState(null);

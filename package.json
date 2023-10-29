@@ -19,7 +19,11 @@
     "@iconify/react": "^4.1.1",
     "autoprefixer": "^10",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "prettier": "^3.0.0",
     "postcss": "^8",
     "tailwindcss": "^3"
   }

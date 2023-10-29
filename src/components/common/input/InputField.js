@@ -5,6 +5,7 @@ const InputField = ({
   placeholder = "Placeholder",
   inputHook,
   className,
+  type = "text"
 }) => {
   const inputProps = inputHook;
 
@@ -13,6 +14,7 @@ const InputField = ({
       <div className="flex flex-col gap-1">
         <label>{label}</label>
         <input
+          type={type}
           value={inputProps.data}
           placeholder={placeholder}
           onChange={inputProps.onChange}

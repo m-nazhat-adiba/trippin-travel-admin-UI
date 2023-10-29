@@ -10,7 +10,7 @@ const PromoHighlight = ({ data }) => {
       width={650}
       height={290}
       alt="promo"
-      className=" w-[654px] h-[290px] overflow-hidden border-[16px] border-white shadow-md rounded-lg"
+      className=" w-full xl:w-[654px] xl:h-[290px] object-cover border-[16px] border-white shadow-md rounded-lg"
     />
   );
 };

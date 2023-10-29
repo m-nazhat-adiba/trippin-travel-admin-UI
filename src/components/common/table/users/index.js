@@ -10,19 +10,19 @@ const UserTable = ({ userData, handleModal, setData }) => {
             <table className="min-w-full text-left text-sm font-light">
               <thead className="border-b font-medium dark:border-neutral-300">
                 <tr>
-                  <th scope="col" className="px-6 py-4">
+                  <th scope="col" className="xl:px-6 px-2 py-4">
                     User
                   </th>
-                  <th scope="col" className="px-6 py-4">
+                  <th scope="col" className="xl:px-6 px-2 py-4">
                     Email
                   </th>
-                  <th scope="col" className="px-6 py-4">
+                  <th scope="col" className="xl:px-6 px-2 py-4">
                     Phone Number
                   </th>
-                  <th scope="col" className="px-6 py-4">
+                  <th scope="col" className="xl:px-6 px-2 py-4">
                     Role
                   </th>
-                  <th scope="col" className="px-6 py-4"></th>
+                  <th scope="col" className="xl:px-6 px-2 py-4"></th>
                 </tr>
               </thead>
               <tbody>

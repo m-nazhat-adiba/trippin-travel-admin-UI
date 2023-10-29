@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { USER_CONFIG } from "@/constant/config";
 import Button from "@/components/common/button";
 import Link from "next/link";
+import ScreenLock from "@/components/common/screen";
 
 const EditPromo = () => {
   const router = useRouter();
@@ -50,77 +51,80 @@ const EditPromo = () => {
   };
 
   return (
-    <Layout>
-      <ContentLayout title="Edit Promo">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-9">
-          <div className="flex flex-col gap-7 my-2">
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                inputHook={promoHook}
-                placeholder="TEST01"
-                label="Promo Code"
-              />
+    <>
+      <ScreenLock />
+      <Layout>
+        <ContentLayout title="Edit Promo">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-9">
+            <div className="flex flex-col gap-7 my-2">
+              <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                <InputField
+                  inputHook={promoHook}
+                  placeholder="TEST01"
+                  label="Promo Code"
+                />
+              </div>
+              <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-2"
+                  inputHook={titleHook}
+                  placeholder="Title"
+                  label="Title"
+                />
+              </div>
+              <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                <InputField
+                  inputHook={discHook}
+                  placeholder="IDR"
+                  label="Discount"
+                />
+                <InputField
+                  inputHook={claimHook}
+                  placeholder="IDR"
+                  label="Minimum Claim Price"
+                />
+              </div>
+              <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-4"
+                  inputHook={tncHook}
+                  placeholder="Anything"
+                  label="Terms and Condition"
+                />
+              </div>
+              <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-4"
+                  inputHook={imageUrlHook}
+                  placeholder="https://image.com/"
+                  label="Image URL"
+                />
+              </div>
+              <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-4"
+                  inputHook={descHook}
+                  placeholder="Anything"
+                  label="Description"
+                />
+              </div>
             </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-2"
-                inputHook={titleHook}
-                placeholder="Title"
-                label="Title"
-              />
+            <div className="flex gap-2 px-5">
+              <Button
+                disable={loadingPost ? true : false}
+                type="submit"
+                variant="primary"
+              >
+                {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
+              </Button>
+              <Link href={"/promos"}>
+                <Button variant="secondary">Cancel</Button>
+              </Link>
             </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                inputHook={discHook}
-                placeholder="IDR"
-                label="Discount"
-              />
-              <InputField
-                inputHook={claimHook}
-                placeholder="IDR"
-                label="Minimum Claim Price"
-              />
-            </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-4"
-                inputHook={tncHook}
-                placeholder="Anything"
-                label="Terms and Condition"
-              />
-            </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-4"
-                inputHook={imageUrlHook}
-                placeholder="https://image.com/"
-                label="Image URL"
-              />
-            </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-4"
-                inputHook={descHook}
-                placeholder="Anything"
-                label="Description"
-              />
-            </div>
-          </div>
-          <div className="flex gap-2 px-5">
-            <Button
-              disable={loadingPost ? true : false}
-              type="submit"
-              variant="primary"
-            >
-              {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
-            </Button>
-            <Link href={"/promos"}>
-              <Button variant="secondary">Cancel</Button>
-            </Link>
-          </div>
-        </form>
-      </ContentLayout>
-    </Layout>
+          </form>
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 

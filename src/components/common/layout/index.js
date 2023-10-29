@@ -4,7 +4,7 @@ import SideBar from "../navigation/SideBar";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex w-screen mx-auto">
+    <div className="hidden md:flex w-screen mx-auto">
       <SideBar />
       <div className="flex flex-col w-full items-start pl-4 pr-8">
         <NavBar />

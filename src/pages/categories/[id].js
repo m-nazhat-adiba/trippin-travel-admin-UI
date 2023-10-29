@@ -9,6 +9,7 @@ import { USER_CONFIG } from "@/constant/config";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Button from "@/components/common/button";
+import ScreenLock from "@/components/common/screen";
 
 const EditCategory = () => {
   const router = useRouter();
@@ -44,42 +45,45 @@ const EditCategory = () => {
   };
 
   return (
-    <Layout>
-      <ContentLayout title="Add New Category">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-9">
-          <div className="flex flex-col gap-7 my-2">
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-2"
-                inputHook={titleHook}
-                placeholder="Title"
-                label="Title"
-              />
+    <>
+      <ScreenLock />
+      <Layout>
+        <ContentLayout title="Add New Category">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-9">
+            <div className="flex flex-col gap-7 my-2">
+              <div className="grid grid-cols-4 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-2"
+                  inputHook={titleHook}
+                  placeholder="Title"
+                  label="Title"
+                />
+              </div>
+              <div className="grid grid-cols-4 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-4"
+                  inputHook={imageUrlHook}
+                  placeholder="https://image.com/"
+                  label="Image URL"
+                />
+              </div>
             </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-4"
-                inputHook={imageUrlHook}
-                placeholder="https://image.com/"
-                label="Image URL"
-              />
+            <div className="flex gap-2 px-5">
+              <Button
+                disable={loadingPost ? true : false}
+                type="submit"
+                variant="primary"
+              >
+                {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
+              </Button>
+              <Link href={"/categories"}>
+                <Button variant="secondary">Cancel</Button>
+              </Link>
             </div>
-          </div>
-          <div className="flex gap-2 px-5">
-            <Button
-              disable={loadingPost ? true : false}
-              type="submit"
-              variant="primary"
-            >
-              {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
-            </Button>
-            <Link href={"/categories"}>
-              <Button variant="secondary">Cancel</Button>
-            </Link>
-          </div>
-        </form>
-      </ContentLayout>
-    </Layout>
+          </form>
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 

@@ -12,6 +12,7 @@ import SelectInput from "@/components/common/input/SelectInput";
 import { categoryService } from "@/apis";
 import Button from "@/components/common/button";
 import Link from "next/link";
+import ScreenLock from "@/components/common/screen";
 
 const EditActivity = () => {
   const categoryHook = useInput();
@@ -93,114 +94,117 @@ const EditActivity = () => {
   const activityData = { data, error, loading };
 
   return (
-    <Layout>
-      <ContentLayout title="Edit Activity">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-9">
-          {activityData.loading ? (
-            <Spinner />
-          ) : activityData.error ? (
-            console.log(activityData.error)
-          ) : (
-            <div className="flex flex-col gap-7 my-2">
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                {categoryData.loading ? (
-                  <Spinner />
-                ) : categoryData.error ? (
-                  console.log(categoryData.error)
-                ) : (
-                  <SelectInput
-                    data={categoryData.data?.data}
-                    inputHook={categoryHook}
+    <>
+      <ScreenLock />
+      <Layout>
+        <ContentLayout title="Edit Activity">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-9">
+            {activityData.loading ? (
+              <Spinner />
+            ) : activityData.error ? (
+              console.log(activityData.error)
+            ) : (
+              <div className="flex flex-col gap-7 my-2">
+                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                  {categoryData.loading ? (
+                    <Spinner />
+                  ) : categoryData.error ? (
+                    console.log(categoryData.error)
+                  ) : (
+                    <SelectInput
+                      data={categoryData.data?.data}
+                      inputHook={categoryHook}
+                    />
+                  )}
+                  <InputField
+                    className="col-span-2"
+                    inputHook={titleHook}
+                    placeholder="Title"
+                    label="Title"
                   />
-                )}
-                <InputField
-                  className="col-span-2"
-                  inputHook={titleHook}
-                  placeholder="Title"
-                  label="Title"
-                />
+                </div>
+                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                  <InputField
+                    className="col-span-2"
+                    inputHook={addressHook}
+                    placeholder="Address"
+                    label="Address"
+                  />
+                  <InputField
+                    inputHook={cityHook}
+                    placeholder="City"
+                    label="City"
+                  />
+                  <InputField
+                    inputHook={provinceHook}
+                    placeholder="Province"
+                    label="Province"
+                  />
+                </div>
+                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                  <InputField
+                    inputHook={priceHook}
+                    placeholder="IDR"
+                    label="Price"
+                  />
+                  <InputField
+                    inputHook={discHook}
+                    placeholder="IDR"
+                    label="Price Discount"
+                  />
+                </div>
+                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                  <InputField
+                    inputHook={reviewHook}
+                    placeholder="e.g. 100"
+                    label="Total Reviews"
+                  />
+                  <InputField
+                    inputHook={ratingHook}
+                    placeholder="1 - 10"
+                    label="Rating"
+                  />
+                  <InputField
+                    inputHook={facilityHook}
+                    placeholder="Shower, etc"
+                    label="Facility"
+                  />
+                </div>
+                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                  <InputField
+                    className="col-span-4"
+                    inputHook={imageUrlHook}
+                    placeholder="https://image.com/"
+                    label="Image URL"
+                  />
+                </div>
+                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
+                  <InputField
+                    className="col-span-4"
+                    inputHook={descHook}
+                    placeholder="Write anything"
+                    label="Description"
+                  />
+                </div>
               </div>
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                <InputField
-                  className="col-span-2"
-                  inputHook={addressHook}
-                  placeholder="Address"
-                  label="Address"
-                />
-                <InputField
-                  inputHook={cityHook}
-                  placeholder="City"
-                  label="City"
-                />
-                <InputField
-                  inputHook={provinceHook}
-                  placeholder="Province"
-                  label="Province"
-                />
-              </div>
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                <InputField
-                  inputHook={priceHook}
-                  placeholder="IDR"
-                  label="Price"
-                />
-                <InputField
-                  inputHook={discHook}
-                  placeholder="IDR"
-                  label="Price Discount"
-                />
-              </div>
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                <InputField
-                  inputHook={reviewHook}
-                  placeholder="e.g. 100"
-                  label="Total Reviews"
-                />
-                <InputField
-                  inputHook={ratingHook}
-                  placeholder="1 - 10"
-                  label="Rating"
-                />
-                <InputField
-                  inputHook={facilityHook}
-                  placeholder="Shower, etc"
-                  label="Facility"
-                />
-              </div>
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                <InputField
-                  className="col-span-4"
-                  inputHook={imageUrlHook}
-                  placeholder="https://image.com/"
-                  label="Image URL"
-                />
-              </div>
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                <InputField
-                  className="col-span-4"
-                  inputHook={descHook}
-                  placeholder="Write anything"
-                  label="Description"
-                />
-              </div>
-            </div>
-          )}
+            )}
 
-          <div className="flex gap-2 px-5">
-            <Button
-              disable={loadingPost ? true : false}
-              type="submit"
-              variant="primary"
-            >
-              {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
-            </Button>
-            <Link href={"/activities"}>
-              <Button variant="secondary">Cancel</Button>
-            </Link>
-          </div>
-        </form>
-      </ContentLayout>
-    </Layout>
+            <div className="flex gap-2 px-5">
+              <Button
+                disable={loadingPost ? true : false}
+                type="submit"
+                variant="primary"
+              >
+                {loadingPost ? <Spinner className="w-7 h-7" /> : <p>Save</p>}
+              </Button>
+              <Link href={"/activities"}>
+                <Button variant="secondary">Cancel</Button>
+              </Link>
+            </div>
+          </form>
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 

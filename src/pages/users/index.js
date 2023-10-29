@@ -10,6 +10,7 @@ import { postData } from "@/utils/fetchData";
 import { USERS } from "@/constant/api";
 import SelectInput from "@/components/common/input/SelectInput";
 import { USER_CONFIG } from "@/constant/config";
+import ScreenLock from "@/components/common/screen";
 
 const Users = () => {
   const userData = userService.getUserList();
@@ -54,31 +55,34 @@ const Users = () => {
   }, [userId, roleHook.data]);
 
   return (
-    <Layout>
-      <ContentLayout title="All Users" sub="Manage users">
-        {userData.loading ? (
-          <p>Loading...</p>
-        ) : userData.error ? (
-          <p>Error: {userData.error.message}</p>
-        ) : (
-          <UserTable
-            setData={setUserId}
-            handleModal={handleEditModal}
-            userData={userData.data}
-          />
-        )}
-        {showModal ? (
-          <Modal
-            submit={true}
-            title="Edit User Role"
-            handleModal={handleEditModal}
-            handleSubmit={handleChangeRole}
-          >
-            <SelectInput inputHook={roleHook} data={roles} />
-          </Modal>
-        ) : null}
-      </ContentLayout>
-    </Layout>
+    <>
+      <ScreenLock />
+      <Layout>
+        <ContentLayout title="All Users" sub="Manage users">
+          {userData.loading ? (
+            <p>Loading...</p>
+          ) : userData.error ? (
+            <p>Error: {userData.error.message}</p>
+          ) : (
+            <UserTable
+              setData={setUserId}
+              handleModal={handleEditModal}
+              userData={userData.data}
+            />
+          )}
+          {showModal ? (
+            <Modal
+              submit={true}
+              title="Edit User Role"
+              handleModal={handleEditModal}
+              handleSubmit={handleChangeRole}
+            >
+              <SelectInput inputHook={roleHook} data={roles} />
+            </Modal>
+          ) : null}
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 

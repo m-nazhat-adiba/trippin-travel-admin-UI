@@ -9,6 +9,7 @@ import { USER_CONFIG } from "@/constant/config";
 import Link from "next/link";
 import Modal from "@/components/common/modal";
 import Button from "@/components/common/button";
+import ScreenLock from "@/components/common/screen";
 
 const AddCategory = () => {
   const [showModal, setShowModal] = useState(false);
@@ -43,43 +44,46 @@ const AddCategory = () => {
   };
 
   return (
-    <Layout>
-      <ContentLayout title="Add New Category">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-9">
-          <div className="flex flex-col gap-7 my-2">
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-2"
-                inputHook={titleHook}
-                placeholder="Title"
-                label="Title"
-              />
+    <>
+      <ScreenLock />
+      <Layout>
+        <ContentLayout title="Add New Category">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-9">
+            <div className="flex flex-col gap-7 my-2">
+              <div className="grid grid-cols-4 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-2"
+                  inputHook={titleHook}
+                  placeholder="Title"
+                  label="Title"
+                />
+              </div>
+              <div className="grid grid-cols-4 gap-7 w-full px-5">
+                <InputField
+                  className="col-span-4"
+                  inputHook={imageUrlHook}
+                  placeholder="https://image.com/"
+                  label="Image URL"
+                />
+              </div>
             </div>
-            <div className="grid grid-cols-4 gap-7 w-full px-5">
-              <InputField
-                className="col-span-4"
-                inputHook={imageUrlHook}
-                placeholder="https://image.com/"
-                label="Image URL"
-              />
+            <div className="flex gap-2 px-5">
+              <Button type="submit" variant="primary">
+                Save
+              </Button>
+              <Link href={"/categories"}>
+                <Button variant="secondary">Cancel</Button>
+              </Link>
             </div>
-          </div>
-          <div className="flex gap-2 px-5">
-            <Button type="submit" variant="primary">
-              Save
-            </Button>
-            <Link href={"/categories"}>
-              <Button variant="secondary">Cancel</Button>
-            </Link>
-          </div>
-        </form>
-        {showModal ? (
-          <Modal handleModal={handleModal} title="Status">
-            <p>Success</p>
-          </Modal>
-        ) : null}
-      </ContentLayout>
-    </Layout>
+          </form>
+          {showModal ? (
+            <Modal handleModal={handleModal} title="Status">
+              <p>Success</p>
+            </Modal>
+          ) : null}
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 

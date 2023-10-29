@@ -24,7 +24,7 @@ const Activity = ({ data, showModal }) => {
   };
 
   return (
-    <div className="flex px-5 py-4 w-full">
+    <div className="flex lg:flex-row flex-col-reverse xl:gap-0 gap-2 px-5 py-4 w-full">
       <div className="flex flex-col w-full gap-2">
         <header>
           <h2 className="font-bold text-gray-500 text-xs">
@@ -68,7 +68,7 @@ const Activity = ({ data, showModal }) => {
         width={360}
         height={256}
         alt="activity"
-        className="rounded-md h-full object-cover"
+        className="rounded-md lg:w-1/3 w-full h-auto object-cover"
       />
     </div>
   );

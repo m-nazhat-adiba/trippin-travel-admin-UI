@@ -4,7 +4,7 @@ import React from "react";
 
 const ActivityCard = ({ activityData }) => {
   return (
-    <article className="flex bg-white shadow-md px-5 py-4 w-[60%] rounded-lg">
+    <article className="flex bg-white shadow-md px-5 py-4 w-full xl:w-[60%] rounded-lg">
       <div className="flex flex-col w-full">
         <h2 className="font-bold text-gray-500 text-xs">
           {activityData.category.name}
@@ -12,7 +12,7 @@ const ActivityCard = ({ activityData }) => {
         <h1 className="text-xl font-bold text-gray-900">
           {activityData.title}
         </h1>
-        <p className="w-1/2 py-2">{activityData.description}</p>
+        <p className="w-[90%] py-2">{activityData.description}</p>
       </div>
       <Image
         loader={imageLoader}
@@ -20,7 +20,7 @@ const ActivityCard = ({ activityData }) => {
         width={360}
         height={256}
         alt="activity"
-        className="rounded-md"
+        className="rounded-md xl:w-1/2 w-1/3 h-auto object-cover"
       />
     </article>
   );

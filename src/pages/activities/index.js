@@ -4,6 +4,7 @@ import ContentLayout from "@/components/common/layout/content";
 import React, { useState } from "react";
 import { activityService } from "@/apis";
 import Modal from "@/components/common/modal";
+import ScreenLock from "@/components/common/screen";
 
 const Activities = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,33 +15,36 @@ const Activities = () => {
   };
 
   return (
-    <Layout>
-      <ContentLayout
-        title="Activities"
-        sub="Products"
-        button={true}
-        buttonText="Activity"
-        target="/activities/add"
-      >
-        {showModal ? (
-          <Modal handleModal={handleEditModal} title="Notification">
-            <p>Delete Success</p>
-          </Modal>
-        ) : null}
+    <>
+      <ScreenLock />
+      <Layout>
+        <ContentLayout
+          title="Activities"
+          sub="Products"
+          button={true}
+          buttonText="Activity"
+          target="/activities/add"
+        >
+          {showModal ? (
+            <Modal handleModal={handleEditModal} title="Notification">
+              <p>Delete Success</p>
+            </Modal>
+          ) : null}
 
-        <div className="flex flex-col gap-4">
-          {activityData.loading ? (
-            <p>Loading...</p>
-          ) : activityData.error ? (
-            <p>Error: {activityData.error.message}</p>
-          ) : (
-            activityData.data.data.map((item, key) => (
-              <Activity showModal={setShowModal} data={item} key={key} />
-            ))
-          )}
-        </div>
-      </ContentLayout>
-    </Layout>
+          <div className="flex flex-col gap-4">
+            {activityData.loading ? (
+              <p>Loading...</p>
+            ) : activityData.error ? (
+              <p>Error: {activityData.error.message}</p>
+            ) : (
+              activityData.data.data.map((item, key) => (
+                <Activity showModal={setShowModal} data={item} key={key} />
+              ))
+            )}
+          </div>
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 

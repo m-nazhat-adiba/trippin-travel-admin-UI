@@ -2,7 +2,7 @@ import React from "react";
 
 const VARIANTS = {
   primary: "bg-[#4FD1C5] text-white font-bold",
-  secondary: "border-2 border-gray-300 bg-white",
+  secondary: "border-2 border-gray-400 bg-white",
 };
 
 const Button = ({
@@ -17,7 +17,7 @@ const Button = ({
       disabled={disable}
       onClick={handleClick}
       type={type}
-      className={`${VARIANTS[variant]} py-2 px-6 rounded-lg  `}
+      className={`${VARIANTS[variant]} inline-flex py-2 px-6 rounded-lg text-base border w-full justify-center`}
     >
       {children}
     </button>

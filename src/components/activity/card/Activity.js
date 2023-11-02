@@ -25,8 +25,8 @@ const Activity = ({ data, showModal }) => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col-reverse xl:gap-0 gap-2 px-5 py-4 w-full">
-      <div className="flex flex-col w-full gap-2">
+    <div className="flex lg:flex-row flex-col-reverse xl:gap-0 gap-2 px-5 py-10 w-full border-b-2 border-gray-200 justify-between">
+      <div className="flex flex-col w-[60%] gap-2 pr-8">
         <header>
           <h2 className="font-bold text-gray-500 text-xs">
             {data.category.name}
@@ -35,7 +35,7 @@ const Activity = ({ data, showModal }) => {
             {data.title}
             <span className="text-yellow-500 mx-1">{data.rating}☆</span>
           </h1>
-          <p className="w-[90%] py-2 text-gray-500">{data.description}</p>
+          <p className="w-full py-2 text-gray-500">{data.description}</p>
         </header>
 
         <div className="flex flex-col">
@@ -54,13 +54,15 @@ const Activity = ({ data, showModal }) => {
             </p>
           </div>
         </div>
-        <div className="flex gap-2 mt-3">
-          <Link href={`/activities/${data.id}`}>
-            <Button variant="primary">Edit</Button>
-          </Link>
-          <Button variant="secondary" handleClick={handleDelete}>
-            Delete
-          </Button>
+        <div className="flex flex-col flex-grow justify-end">
+          <div className="grid grid-cols-4 gap-2 mt-3">
+            <Link href={`/activities/${data.id}`} className="w-full flex">
+              <Button variant="primary">Edit</Button>
+            </Link>
+            <Button variant="secondary" handleClick={handleDelete}>
+              Delete
+            </Button>
+          </div>
         </div>
       </div>
       <Image

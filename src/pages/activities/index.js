@@ -32,7 +32,7 @@ const Activities = () => {
             </Modal>
           ) : null}
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             {activityData.loading ? (
               <p>Loading...</p>
             ) : activityData.error ? (

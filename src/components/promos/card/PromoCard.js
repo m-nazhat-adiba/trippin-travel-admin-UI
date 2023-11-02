@@ -7,6 +7,7 @@ import { PROMOS } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import { deleteData } from "@/utils/fetchData";
 import imageLoader from "@/utils/imageLoader";
+import Button from "@/components/common/button";
 
 const PromoCard = ({ data }) => {
   const [response, setResponse] = useState();
@@ -24,7 +25,7 @@ const PromoCard = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 mb-4">
+    <div className="flex flex-col gap-5 pb-8 px-1 h-full">
       <Image
         loader={imageLoader}
         src={data.imageUrl}
@@ -33,7 +34,7 @@ const PromoCard = ({ data }) => {
         alt="promo-image"
         className="rounded-xl h-[192px] w-auto object-cover"
       />
-      <div className="flex flex-col px-3 gap-2">
+      <div className="flex flex-col flex-grow gap-2">
         <div>
           <h1 className="text-green-700 font-medium">{data.promo_code}</h1>
           <h2 className="font-bold text-xl">{data.title}</h2>
@@ -47,18 +48,15 @@ const PromoCard = ({ data }) => {
           <li>Minimum price Rp {data.minimum_claim_price}</li>
           <li>{data.terms_condition}</li>
         </ul>
-        <div className="flex gap-2 mt-3">
-          <Link href={`/promos/${data.id}`}>
-            <button className="py-2 px-6 bg-[#4FD1C5] rounded-lg text-white font-bold">
-              Edit
-            </button>
-          </Link>
-          <button
-            onClick={handleDelete}
-            className="py-2 px-4 border-2 border-gray-300 rounded-lg"
-          >
-            Delete
-          </button>
+        <div className="flex flex-col flex-grow justify-end">
+          <div className="grid grid-cols-2 gap-2 mt-3">
+            <Link href={`/promos/${data.id}`} className="w-full">
+              <Button variant="primary">Edit</Button>
+            </Link>
+            <Button variant="secondary" handleClick={handleDelete}>
+              Delete
+            </Button>
+          </div>
         </div>
       </div>
     </div>

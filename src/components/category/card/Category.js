@@ -36,12 +36,12 @@ const Category = ({ data }) => {
         alt="promo-image"
         className="rounded-xl h-[192px] w-auto object-cover"
       />
-      <div className="flex flex-col px-3 gap-2">
+      <div className="flex flex-col gap-2">
         <div>
           <h2 className="font-bold text-xl">{data.name}</h2>
         </div>
-        <div className="flex gap-2 mt-3">
-          <Link href={`/categories/${data.id}`}>
+        <div className="grid grid-cols-2 gap-2 mt-3">
+          <Link href={`/categories/${data.id}`} className="w-full">
             <Button variant="primary">Edit</Button>
           </Link>
           <Button variant="secondary" handleClick={handleDelete}>

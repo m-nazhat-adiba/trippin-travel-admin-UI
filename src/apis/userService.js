@@ -1,4 +1,4 @@
-import { USER_CONFIG } from "@/constant/config";
+import { USER_CONFIG, USER_LOGGED_CONFIG } from "@/constant/config";
 import useAxios from "@/hooks/useAxios";
 import { getData } from "@/utils/fetchData";
 
@@ -10,4 +10,10 @@ function GetUserList() {
   return userList;
 }
 
-export { GetUserList };
+function GetLoggedUser() {
+  const userData = useAxios(getData, USERS.GET_LOGGED_USER, USER_LOGGED_CONFIG);
+
+  return userData;
+}
+
+export { GetUserList, GetLoggedUser };

@@ -14,3 +14,11 @@ export const GENERAL_CONFIG = {
     apiKey: API_KEY,
   },
 };
+
+export const IMAGE_UPLOAD_CONFIG = {
+  headers: {
+    // "Content-Type": "multipart/form-data",
+    apiKey: API_KEY,
+    Authorization: `Bearer ${JWT_TOKEN}`,
+  },
+};

@@ -3,6 +3,8 @@ const BASE_URL = "https://travel-journal-api-bootcamp.do.dibimbing.id";
 export const USERS = {
   GET_ALL_USERS: `${BASE_URL}/api/v1/all-user`,
   UPDATE_ROLE: `${BASE_URL}/api/v1/update-user-role/`,
+  GET_LOGGED_USER: `${BASE_URL}/api/v1/user`,
+  UPDATE_PROFILE: `${BASE_URL}/api/v1/update-profile`,
 };
 
 export const ACTIVITIES = {

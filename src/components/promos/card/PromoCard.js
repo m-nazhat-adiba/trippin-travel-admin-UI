@@ -9,16 +9,15 @@ import { deleteData } from "@/utils/fetchData";
 import imageLoader from "@/utils/imageLoader";
 import Button from "@/components/common/button";
 
-const PromoCard = ({ data }) => {
+const PromoCard = ({ data, showModal }) => {
   const [response, setResponse] = useState();
   const [error, setError] = useState();
-  const router = useRouter();
 
   const handleDelete = async () => {
     try {
       const deletePost = await deleteData(PROMOS.DELETE + data.id, USER_CONFIG);
       setResponse(deletePost);
-      router.reload();
+      showModal(true);
     } catch (error) {
       setError(error);
     }

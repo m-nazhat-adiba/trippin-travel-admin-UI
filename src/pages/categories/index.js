@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { categoryService } from "@/apis";
 import Category from "@/components/category/card/Category";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import ScreenLock from "@/components/common/screen";
+import Modal from "@/components/common/modal";
+import { useRouter } from "next/router";
 
 const Categories = () => {
+  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+
   const categoryData = categoryService.GetCategoryList();
+
+  const handleEditModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleReload = () => {
+    router.reload();
+  };
 
   return (
     <>
@@ -27,12 +40,20 @@ const Categories = () => {
               <p>{categoryData.error}</p>
             ) : (
               categoryData.data.data.map((item, key) => (
-                <Category data={item} key={key} />
+                <Category showModal={setShowModal} data={item} key={key} />
               ))
             )}
           </div>
+          {showModal ? (
+            <Modal
+              handleRedirect={handleReload}
+              handleModal={handleEditModal}
+              title="Notification"
+            >
+              <p>Delete Success</p>
+            </Modal>
+          ) : null}
         </ContentLayout>
-        ;
       </Layout>
     </>
   );

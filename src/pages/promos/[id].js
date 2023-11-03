@@ -14,10 +14,13 @@ import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/inputFile";
+import Modal from "@/components/common/modal";
 
 const EditPromo = () => {
   const router = useRouter();
   const { id } = router.query;
+
+  const [showModal, setShowModal] = useState(false);
 
   const [dataPost, setDataPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(false);
@@ -61,11 +64,18 @@ const EditPromo = () => {
     try {
       const result = await postData(PROMOS.UPDATE + id, payload, USER_CONFIG);
       setDataPost(result.data);
+      setShowModal(true);
     } catch (error) {
       setErrorPost(error);
     } finally {
       setLoadingPost(false);
     }
+  };
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
+  const handlePushRouter = () => {
+    router.push("/promos");
   };
 
   return (
@@ -143,6 +153,15 @@ const EditPromo = () => {
               </Link>
             </div>
           </form>
+          {showModal ? (
+            <Modal
+              handleRedirect={handlePushRouter}
+              handleModal={handleModal}
+              title="Status"
+            >
+              <p>Success</p>
+            </Modal>
+          ) : null}
         </ContentLayout>
       </Layout>
     </>

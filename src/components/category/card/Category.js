@@ -9,10 +9,9 @@ import { USER_CONFIG } from "@/constant/config";
 import { deleteData } from "@/utils/fetchData";
 import imageLoader from "@/utils/imageLoader";
 
-const Category = ({ data }) => {
+const Category = ({ data, showModal }) => {
   const [response, setResponse] = useState();
   const [error, setError] = useState();
-  const router = useRouter();
 
   const handleDelete = async () => {
     try {
@@ -21,7 +20,7 @@ const Category = ({ data }) => {
         USER_CONFIG
       );
       setResponse(deletePost);
-      router.reload();
+      showModal(true);
     } catch (error) {
       setError(error);
     }

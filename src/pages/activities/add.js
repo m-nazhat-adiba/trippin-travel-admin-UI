@@ -15,8 +15,14 @@ import { IMAGE_UPLOAD_CONFIG, USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/inputFile";
+import Modal from "@/components/common/modal";
+import { useRouter } from "next/router";
 
 const AddActivity = () => {
+  const router = useRouter();
+
+  const [showModal, setShowModal] = useState(false);
+
   const [dataPost, setDataPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(false);
   const [errorPost, setErrorPost] = useState(null);
@@ -74,12 +80,19 @@ const AddActivity = () => {
     try {
       const result = await axios.post(ACTIVITIES.CREATE, payload, USER_CONFIG);
       setDataPost(result.data);
+      setShowModal(true);
     } catch (error) {
       setErrorPost(error);
       console.log(error);
     } finally {
       setLoadingPost(false);
     }
+  };
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
+  const handleReload = () => {
+    router.reload();
   };
 
   return (
@@ -183,6 +196,15 @@ const AddActivity = () => {
               </Link>
             </div>
           </form>
+          {showModal ? (
+            <Modal
+              handleRedirect={handleReload}
+              handleModal={handleModal}
+              title="Status"
+            >
+              <p>Success</p>
+            </Modal>
+          ) : null}
         </ContentLayout>
       </Layout>
     </>

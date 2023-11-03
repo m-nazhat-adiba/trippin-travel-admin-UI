@@ -6,10 +6,17 @@ import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
+import { useRouter } from "next/router";
 
 const Activities = () => {
+  const router = useRouter();
+
   const [showModal, setShowModal] = useState(false);
   const activityData = activityService.GetActivityList();
+
+  const handleReload = () => {
+    router.reload();
+  };
 
   const handleEditModal = () => {
     setShowModal(!showModal);
@@ -27,7 +34,11 @@ const Activities = () => {
           target="/activities/add"
         >
           {showModal ? (
-            <Modal handleModal={handleEditModal} title="Notification">
+            <Modal
+              handleRedirect={handleReload}
+              handleModal={handleEditModal}
+              title="Notification"
+            >
               <p>Delete Success</p>
             </Modal>
           ) : null}

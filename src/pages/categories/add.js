@@ -13,8 +13,11 @@ import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import InputFile from "@/components/common/input/inputFile";
 import handleUpload from "@/utils/handleUpload";
+import { useRouter } from "next/router";
 
 const AddCategory = () => {
+  const router = useRouter();
+
   const [showModal, setShowModal] = useState(false);
 
   const [dataPost, setDataPost] = useState(null);
@@ -24,6 +27,10 @@ const AddCategory = () => {
   const [imageUrl, setImageUrl] = useState("");
 
   const titleHook = useInput();
+
+  const handleReload = () => {
+    router.reload();
+  };
 
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -97,7 +104,11 @@ const AddCategory = () => {
             </div>
           </form>
           {showModal ? (
-            <Modal handleModal={handleModal} title="Status">
+            <Modal
+              handleRedirect={handleReload}
+              handleModal={handleModal}
+              title="Status"
+            >
               <p>Success</p>
             </Modal>
           ) : null}

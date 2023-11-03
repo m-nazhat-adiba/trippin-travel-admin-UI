@@ -13,8 +13,11 @@ import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/inputFile";
+import { useRouter } from "next/router";
 
 const AddPromo = () => {
+  const router = useRouter();
+
   const [showModal, setShowModal] = useState(false);
   const [dataPost, setDataPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(false);
@@ -68,6 +71,9 @@ const AddPromo = () => {
 
   const handleModal = () => {
     setShowModal(!showModal);
+  };
+  const handleReload = () => {
+    router.reload();
   };
 
   return (
@@ -142,7 +148,11 @@ const AddPromo = () => {
             </div>
           </form>
           {showModal ? (
-            <Modal handleModal={handleModal} title="Status">
+            <Modal
+              handleRedirect={handleReload}
+              handleModal={handleModal}
+              title="Status"
+            >
               <p>Success</p>
             </Modal>
           ) : null}

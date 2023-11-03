@@ -16,6 +16,7 @@ import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/inputFile";
+import Modal from "@/components/common/modal";
 
 const EditActivity = () => {
   const categoryHook = useInput();
@@ -29,6 +30,8 @@ const EditActivity = () => {
   const ratingHook = useInput();
   const facilityHook = useInput();
   const descHook = useInput();
+
+  const [showModal, setShowModal] = useState(false);
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -92,12 +95,18 @@ const EditActivity = () => {
         USER_CONFIG
       );
       setDataPost(result.data);
-      router.push("/activities");
+      setShowModal(true);
     } catch (error) {
       setErrorPost(error);
     } finally {
       setLoadingPost(false);
     }
+  };
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
+  const handlePushRouter = () => {
+    router.push("/activities");
   };
 
   useEffect(() => {
@@ -221,6 +230,15 @@ const EditActivity = () => {
               </Link>
             </div>
           </form>
+          {showModal ? (
+            <Modal
+              handleRedirect={handlePushRouter}
+              handleModal={handleModal}
+              title="Status"
+            >
+              <p>Success</p>
+            </Modal>
+          ) : null}
         </ContentLayout>
       </Layout>
     </>

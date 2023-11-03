@@ -12,6 +12,8 @@ import { CATEGORIES } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
+import handleUpload from "@/utils/handleUpload";
+import InputFile from "@/components/common/input/inputFile";
 
 const EditCategory = () => {
   const router = useRouter();
@@ -20,16 +22,31 @@ const EditCategory = () => {
   const [dataPost, setDataPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(false);
   const [errorPost, setErrorPost] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   const titleHook = useInput();
-  const imageUrlHook = useInput();
+
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
+
+  const handleGrabUrl = async () => {
+    try {
+      const urls = await handleUpload(imageFile);
+      console.log("urls", urls);
+      setImageUrl(urls.url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoadingPost(true);
     const payload = {
       name: titleHook.data,
-      imageUrl: imageUrlHook.data,
+      imageUrl: imageUrl,
     };
     try {
       const result = await postData(
@@ -60,16 +77,19 @@ const EditCategory = () => {
                   label="Title"
                 />
               </div>
-              <div className="grid grid-cols-4 gap-7 w-full px-5">
-                <InputField
-                  className="col-span-4"
-                  inputHook={imageUrlHook}
-                  placeholder="https://image.com/"
-                  label="Image URL"
-                />
+              <div className="flex xl:flex-col w-1/2 flex-col gap-7  px-5">
+                <InputFile handleFileChange={handleFileChange} />
+                <Button
+                  disable={imageFile ? false : true}
+                  type="button"
+                  handleClick={handleGrabUrl}
+                  variant="rounded"
+                >
+                  Upload Image
+                </Button>
               </div>
             </div>
-            <div className="flex gap-2 px-5">
+            <div className="grid grid-cols-8 gap-2 px-5">
               <Button
                 disable={loadingPost ? true : false}
                 type="submit"

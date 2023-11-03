@@ -14,6 +14,8 @@ import Spinner from "@/components/common/spinner";
 import { ACTIVITIES } from "@/constant/api";
 import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
+import handleUpload from "@/utils/handleUpload";
+import InputFile from "@/components/common/input/inputFile";
 
 const EditActivity = () => {
   const categoryHook = useInput();
@@ -26,7 +28,6 @@ const EditActivity = () => {
   const reviewHook = useInput();
   const ratingHook = useInput();
   const facilityHook = useInput();
-  const imageUrlHook = useInput();
   const descHook = useInput();
 
   const [data, setData] = useState(null);
@@ -35,9 +36,25 @@ const EditActivity = () => {
   const [dataPost, setDataPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(false);
   const [errorPost, setErrorPost] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   const router = useRouter();
   const { id } = router.query;
+
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
+
+  const handleGrabUrl = async () => {
+    try {
+      const urls = await handleUpload(imageFile);
+      console.log("urls", urls);
+      setImageUrl(urls.url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleFetch = async () => {
     try {
@@ -56,7 +73,7 @@ const EditActivity = () => {
       categoryId: "1bb4cbb2-080e-4904-9d6d-09eee6acaf15",
       title: titleHook.data,
       description: descHook.data,
-      imageUrls: [imageUrlHook.data],
+      imageUrls: [imageUrl],
       price: parseInt(priceHook.data),
       price_discount: discHook.data,
       rating: ratingHook.data,
@@ -109,7 +126,7 @@ const EditActivity = () => {
                     <Spinner />
                   ) : categoryData.error ? (
                     <p>{categoryData.error}</p>
-                    ) : (
+                  ) : (
                     <SelectInput
                       data={categoryData.data?.data}
                       inputHook={categoryHook}
@@ -172,23 +189,26 @@ const EditActivity = () => {
                 <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
                   <InputField
                     className="col-span-4"
-                    inputHook={imageUrlHook}
-                    placeholder="https://image.com/"
-                    label="Image URL"
-                  />
-                </div>
-                <div className="grid xl:grid-cols-4 grid-cols-2 gap-7 w-full px-5">
-                  <InputField
-                    className="col-span-4"
                     inputHook={descHook}
                     placeholder="Write anything"
                     label="Description"
                   />
                 </div>
+                <div className="flex xl:flex-col w-1/2 flex-col gap-7  px-5">
+                  <InputFile handleFileChange={handleFileChange} />
+                  <Button
+                    disable={imageFile ? false : true}
+                    type="button"
+                    handleClick={handleGrabUrl}
+                    variant="rounded"
+                  >
+                    Upload Image
+                  </Button>
+                </div>
               </div>
             )}
 
-            <div className="flex gap-2 px-5">
+            <div className="grid grid-cols-8 gap-2 px-5">
               <Button
                 disable={loadingPost ? true : false}
                 type="submit"

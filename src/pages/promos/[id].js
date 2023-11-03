@@ -13,7 +13,7 @@ import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import handleUpload from "@/utils/handleUpload";
-import InputFile from "@/components/common/input/inputFile";
+import InputFile from "@/components/common/input/InputFile";
 import Modal from "@/components/common/modal";
 
 const EditPromo = () => {

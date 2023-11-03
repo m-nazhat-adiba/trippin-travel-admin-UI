@@ -14,7 +14,7 @@ import { ACTIVITIES, UPLOAD_IMAGE } from "@/constant/api";
 import { IMAGE_UPLOAD_CONFIG, USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
-import InputFile from "@/components/common/input/inputFile";
+import InputFile from "@/components/common/input/InputFile";
 import Modal from "@/components/common/modal";
 import { useRouter } from "next/router";
 

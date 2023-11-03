@@ -31,3 +31,5 @@ export const AUTH = {
   LOGIN: `${BASE_URL}/api/v1/login`,
   REGISTER: `${BASE_URL}/api/v1/register`,
 };
+
+export const UPLOAD_IMAGE = `${BASE_URL}/api/v1/upload-image`;

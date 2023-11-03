@@ -3,7 +3,7 @@ import React from "react";
 
 import usePath from "@/hooks/usePath";
 
-const NavBar = () => {
+const NavBar = ({ setDrawer }) => {
   const path = usePath();
   return (
     <div className="flex justify-between w-full items-center px-5 py-8">
@@ -23,7 +23,11 @@ const NavBar = () => {
         </h1>
       </div>
       <div>
-        <Icon icon="material-symbols:person" className="text-xl" />
+        <Icon
+          onClick={() => setDrawer(true)}
+          icon="material-symbols:person"
+          className="text-xl"
+        />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-const BASE_URL = "https://travel-journal-api-bootcamp.do.dibimbing.id";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const USERS = {
   GET_ALL_USERS: `${BASE_URL}/api/v1/all-user`,

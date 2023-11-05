@@ -8,12 +8,12 @@ import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
 import { CATEGORIES } from "@/constant/api";
-import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
-import InputFile from "@/components/common/input/inputFile";
 import handleUpload from "@/utils/handleUpload";
 import { useRouter } from "next/router";
+import InputFile from "@/components/common/input/InputFile";
+import getToken from "@/utils/getToken";
 
 const AddCategory = () => {
   const router = useRouter();
@@ -27,6 +27,8 @@ const AddCategory = () => {
   const [imageUrl, setImageUrl] = useState("");
 
   const titleHook = useInput();
+
+  const header = getToken().userConfig;
 
   const handleReload = () => {
     router.reload();
@@ -54,7 +56,7 @@ const AddCategory = () => {
       imageUrl: imageUrl,
     };
     try {
-      const result = await postData(CATEGORIES.CREATE, payload, USER_CONFIG);
+      const result = await postData(CATEGORIES.CREATE, payload, header);
       setDataPost(result.data);
       setShowModal(true);
     } catch (error) {

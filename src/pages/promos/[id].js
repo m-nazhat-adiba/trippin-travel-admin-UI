@@ -15,6 +15,7 @@ import { postData } from "@/utils/fetchData";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/InputFile";
 import Modal from "@/components/common/modal";
+import getToken from "@/utils/getToken";
 
 const EditPromo = () => {
   const router = useRouter();
@@ -34,6 +35,8 @@ const EditPromo = () => {
   const claimHook = useInput();
   const tncHook = useInput();
   const descHook = useInput();
+
+  const header = getToken().userConfig;
 
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -62,7 +65,7 @@ const EditPromo = () => {
       minimum_claim_price: parseInt(claimHook.data),
     };
     try {
-      const result = await postData(PROMOS.UPDATE + id, payload, USER_CONFIG);
+      const result = await postData(PROMOS.UPDATE + id, payload, header);
       setDataPost(result.data);
       setShowModal(true);
     } catch (error) {

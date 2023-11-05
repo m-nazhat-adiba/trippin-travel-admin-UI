@@ -11,6 +11,7 @@ import { USERS } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
+import getToken from "@/utils/getToken";
 
 const Users = () => {
   const userData = userService.GetUserList();
@@ -20,6 +21,8 @@ const Users = () => {
   const [loadingPost, setLoadingPost] = useState(false);
   const [errorPost, setErrorPost] = useState(null);
   const [userId, setUserId] = useState();
+
+  const header = getToken().userConfig;
 
   const roles = [
     { id: "admin", name: "Admin" },
@@ -38,7 +41,7 @@ const Users = () => {
       const result = await postData(
         USERS.UPDATE_ROLE + userId,
         payload,
-        USER_CONFIG
+        header
       );
       setDataPost(result.data);
     } catch (error) {

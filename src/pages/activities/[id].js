@@ -15,8 +15,10 @@ import { ACTIVITIES } from "@/constant/api";
 import { GENERAL_CONFIG, USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
-import InputFile from "@/components/common/input/inputFile";
+import InputFile from "@/components/common/input/InputFile";
 import Modal from "@/components/common/modal";
+import { getData, postData } from "@/utils/fetchData";
+import getToken from "@/utils/getToken";
 
 const EditActivity = () => {
   const categoryHook = useInput();
@@ -45,6 +47,8 @@ const EditActivity = () => {
   const router = useRouter();
   const { id } = router.query;
 
+  const header = getToken().userConfig;
+
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
   };
@@ -61,7 +65,7 @@ const EditActivity = () => {
 
   const handleFetch = async () => {
     try {
-      const result = await axios.get(ACTIVITIES.GET_BY_ID + id, GENERAL_CONFIG);
+      const result = await getData(ACTIVITIES.GET_BY_ID + id, GENERAL_CONFIG);
       setData(result.data);
     } catch (error) {
       setError(error);
@@ -89,11 +93,7 @@ const EditActivity = () => {
         "<iframe src='https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3967.0362349768025!2d106.8428182!3d-6.125826300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMDcnMzMuMCJTIDEwNsKwNTAnMzQuMiJF!5e0!3m2!1sen!2sid!4v1679931691632!5m2!1sen!2sid' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>",
     };
     try {
-      const result = await axios.post(
-        ACTIVITIES.UPDATE + id,
-        payload,
-        USER_CONFIG
-      );
+      const result = await postData(ACTIVITIES.UPDATE + id, payload, header);
       setDataPost(result.data);
       setShowModal(true);
     } catch (error) {

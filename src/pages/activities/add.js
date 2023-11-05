@@ -1,6 +1,5 @@
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { categoryService } from "@/apis";
 import Button from "@/components/common/button";
@@ -10,13 +9,14 @@ import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import ScreenLock from "@/components/common/screen";
 import Spinner from "@/components/common/spinner";
-import { ACTIVITIES, UPLOAD_IMAGE } from "@/constant/api";
-import { IMAGE_UPLOAD_CONFIG, USER_CONFIG } from "@/constant/config";
+import { ACTIVITIES } from "@/constant/api";
 import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/InputFile";
 import Modal from "@/components/common/modal";
 import { useRouter } from "next/router";
+import { postData } from "@/utils/fetchData";
+import getToken from "@/utils/getToken";
 
 const AddActivity = () => {
   const router = useRouter();
@@ -43,6 +43,7 @@ const AddActivity = () => {
   const descHook = useInput();
 
   const categoryData = categoryService.GetCategoryList();
+  const header = getToken().userConfig;
 
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -78,7 +79,7 @@ const AddActivity = () => {
         "<iframe src='https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3967.0362349768025!2d106.8428182!3d-6.125826300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMDcnMzMuMCJTIDEwNsKwNTAnMzQuMiJF!5e0!3m2!1sen!2sid!4v1679931691632!5m2!1sen!2sid' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>",
     };
     try {
-      const result = await axios.post(ACTIVITIES.CREATE, payload, USER_CONFIG);
+      const result = await postData(ACTIVITIES.CREATE, payload, header);
       setDataPost(result.data);
       setShowModal(true);
     } catch (error) {

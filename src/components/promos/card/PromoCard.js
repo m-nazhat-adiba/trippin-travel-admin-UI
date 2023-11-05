@@ -1,21 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import { PROMOS } from "@/constant/api";
-import { USER_CONFIG } from "@/constant/config";
 import { deleteData } from "@/utils/fetchData";
 import imageLoader from "@/utils/imageLoader";
 import Button from "@/components/common/button";
+import getToken from "@/utils/getToken";
 
 const PromoCard = ({ data, showModal }) => {
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
+  const header = getToken().userConfig;
+
   const handleDelete = async () => {
     try {
-      const deletePost = await deleteData(PROMOS.DELETE + data.id, USER_CONFIG);
+      const deletePost = await deleteData(PROMOS.DELETE + data.id, header);
       setResponse(deletePost);
       showModal(true);
     } catch (error) {

@@ -9,12 +9,12 @@ import ContentLayout from "@/components/common/layout/content";
 import ScreenLock from "@/components/common/screen";
 import Spinner from "@/components/common/spinner";
 import { CATEGORIES } from "@/constant/api";
-import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import handleUpload from "@/utils/handleUpload";
 import InputFile from "@/components/common/input/InputFile";
 import Modal from "@/components/common/modal";
+import getToken from "@/utils/getToken";
 
 const EditCategory = () => {
   const router = useRouter();
@@ -29,6 +29,8 @@ const EditCategory = () => {
   const [imageUrl, setImageUrl] = useState("");
 
   const titleHook = useInput();
+
+  const header = getToken().userConfig;
 
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -52,11 +54,7 @@ const EditCategory = () => {
       imageUrl: imageUrl,
     };
     try {
-      const result = await postData(
-        CATEGORIES.UPDATE + id,
-        payload,
-        USER_CONFIG
-      );
+      const result = await postData(CATEGORIES.UPDATE + id, payload, header);
       setDataPost(result.data);
       setShowModal(true);
     } catch (error) {

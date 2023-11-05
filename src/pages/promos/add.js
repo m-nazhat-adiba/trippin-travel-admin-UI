@@ -12,8 +12,9 @@ import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import handleUpload from "@/utils/handleUpload";
-import InputFile from "@/components/common/input/inputFile";
 import { useRouter } from "next/router";
+import getToken from "@/utils/getToken";
+import InputFile from "@/components/common/input/InputFile";
 
 const AddPromo = () => {
   const router = useRouter();
@@ -31,6 +32,8 @@ const AddPromo = () => {
   const claimHook = useInput();
   const tncHook = useInput();
   const descHook = useInput();
+
+  const header = getToken().userConfig;
 
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -59,7 +62,7 @@ const AddPromo = () => {
       minimum_claim_price: parseInt(claimHook.data),
     };
     try {
-      const result = await postData(PROMOS.CREATE, payload, USER_CONFIG);
+      const result = await postData(PROMOS.CREATE, payload, header);
       setDataPost(result.data);
       setShowModal(true);
     } catch (error) {

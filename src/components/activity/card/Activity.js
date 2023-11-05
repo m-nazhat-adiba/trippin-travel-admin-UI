@@ -4,19 +4,19 @@ import React, { useState } from "react";
 
 import Button from "@/components/common/button";
 import { ACTIVITIES } from "@/constant/api";
-import { USER_CONFIG } from "@/constant/config";
 import { deleteData } from "@/utils/fetchData";
 import imageLoader from "@/utils/imageLoader";
+import getToken from "@/utils/getToken";
 
 const Activity = ({ data, showModal }) => {
   const [response, setResponse] = useState();
   const [error, setError] = useState();
+
+  const header = getToken().userConfig;
+
   const handleDelete = async () => {
     try {
-      const deletePost = await deleteData(
-        ACTIVITIES.DELETE + data.id,
-        USER_CONFIG
-      );
+      const deletePost = await deleteData(ACTIVITIES.DELETE + data.id, header);
       setResponse(deletePost);
       showModal(true);
     } catch (error) {

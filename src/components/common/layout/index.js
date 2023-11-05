@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import NavBar from "../navigation/NavBar";
 import SideBar from "../navigation/SideBar";
@@ -8,11 +8,26 @@ import Image from "next/image";
 import imageLoader from "@/utils/imageLoader";
 import Button from "../button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const [drawer, setDrawer] = useState(false);
+  const router = useRouter();
 
   const userData = userService.GetLoggedUser();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    router.push("/login");
+  };
+
+  useEffect(() => {
+    // Perform localStorage action
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <div className="hidden md:flex w-screen mx-auto">
@@ -56,10 +71,13 @@ const Layout = ({ children }) => {
             </ul>
             <Link
               href={"/edit-profile"}
-              className="flex flex-col flex-grow justify-end"
+              className="flex flex-col flex-grow justify-end w-full"
             >
               <Button variant="primary">Edit Profile</Button>
             </Link>
+            <Button variant="secondary" handleClick={handleLogOut}>
+              Logout
+            </Button>
           </div>
         )}
       </Drawer>

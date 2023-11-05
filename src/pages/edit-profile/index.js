@@ -8,7 +8,7 @@ import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const EditProfile = () => {
@@ -71,6 +71,14 @@ const EditProfile = () => {
   const handlePushRouter = () => {
     router.push("/");
   };
+
+  useEffect(() => {
+    // Perform localStorage action
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <main className="container mx-auto my-5">

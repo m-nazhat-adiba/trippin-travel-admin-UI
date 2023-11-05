@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
+import Button from "@/components/common/button";
 import { PROMOS } from "@/constant/api";
 import { deleteData } from "@/utils/fetchData";
-import imageLoader from "@/utils/imageLoader";
-import Button from "@/components/common/button";
 import getToken from "@/utils/getToken";
+import imageLoader from "@/utils/imageLoader";
 
 const PromoCard = ({ data, showModal }) => {
   const [response, setResponse] = useState();

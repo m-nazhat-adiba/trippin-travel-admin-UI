@@ -40,4 +40,4 @@ function GetLoggedUser() {
   return userData;
 }
 
-export { GetUserList, GetLoggedUser };
+export { GetLoggedUser,GetUserList };

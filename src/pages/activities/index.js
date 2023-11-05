@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import { activityService } from "@/apis";
@@ -6,7 +7,6 @@ import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
-import { useRouter } from "next/router";
 
 const Activities = () => {
   const router = useRouter();

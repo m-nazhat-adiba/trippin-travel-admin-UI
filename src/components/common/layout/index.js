@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
-
-import NavBar from "../navigation/NavBar";
-import SideBar from "../navigation/SideBar";
-import Drawer from "../drawer";
-import { userService } from "@/apis";
 import Image from "next/image";
-import imageLoader from "@/utils/imageLoader";
-import Button from "../button";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
+import { userService } from "@/apis";
+import imageLoader from "@/utils/imageLoader";
+
+import Button from "../button";
+import Drawer from "../drawer";
+import NavBar from "../navigation/NavBar";
+import SideBar from "../navigation/SideBar";
 
 const Layout = ({ children }) => {
   const [drawer, setDrawer] = useState(false);

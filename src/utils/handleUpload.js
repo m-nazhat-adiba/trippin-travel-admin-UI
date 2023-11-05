@@ -1,6 +1,7 @@
-import { UPLOAD_IMAGE } from "@/constant/api";
-import { IMAGE_UPLOAD_CONFIG } from "@/constant/config";
 import axios from "axios";
+
+import { UPLOAD_IMAGE } from "@/constant/api";
+
 import getToken from "./getToken";
 
 const handleUpload = async (file) => {

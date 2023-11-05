@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import Button from "@/components/common/button";
 import { ACTIVITIES } from "@/constant/api";
 import { deleteData } from "@/utils/fetchData";
-import imageLoader from "@/utils/imageLoader";
 import getToken from "@/utils/getToken";
+import imageLoader from "@/utils/imageLoader";
 
 const Activity = ({ data, showModal }) => {
   const [response, setResponse] = useState();

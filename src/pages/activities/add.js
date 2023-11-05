@@ -1,22 +1,22 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import { categoryService } from "@/apis";
 import Button from "@/components/common/button";
 import InputField from "@/components/common/input/InputField";
+import InputFile from "@/components/common/input/InputFile";
 import SelectInput from "@/components/common/input/SelectInput";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
+import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
 import Spinner from "@/components/common/spinner";
 import { ACTIVITIES } from "@/constant/api";
 import useInput from "@/hooks/useInput";
-import handleUpload from "@/utils/handleUpload";
-import InputFile from "@/components/common/input/InputFile";
-import Modal from "@/components/common/modal";
-import { useRouter } from "next/router";
 import { postData } from "@/utils/fetchData";
 import getToken from "@/utils/getToken";
+import handleUpload from "@/utils/handleUpload";
 
 const AddActivity = () => {
   const router = useRouter();

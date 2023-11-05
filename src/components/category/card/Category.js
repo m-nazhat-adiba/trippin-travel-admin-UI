@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import Button from "@/components/common/button";
 import { CATEGORIES } from "@/constant/api";
 import { deleteData } from "@/utils/fetchData";
-import imageLoader from "@/utils/imageLoader";
 import getToken from "@/utils/getToken";
+import imageLoader from "@/utils/imageLoader";
 
 const Category = ({ data, showModal }) => {
   const [response, setResponse] = useState();

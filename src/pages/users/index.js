@@ -8,7 +8,6 @@ import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
 import UserTable from "@/components/common/table/users";
 import { USERS } from "@/constant/api";
-import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
 import getToken from "@/utils/getToken";

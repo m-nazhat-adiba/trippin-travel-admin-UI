@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 import Button from "@/components/common/button";
 import InputField from "@/components/common/input/InputField";
+import InputFile from "@/components/common/input/InputFile";
 import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
@@ -10,10 +12,8 @@ import ScreenLock from "@/components/common/screen";
 import { CATEGORIES } from "@/constant/api";
 import useInput from "@/hooks/useInput";
 import { postData } from "@/utils/fetchData";
-import handleUpload from "@/utils/handleUpload";
-import { useRouter } from "next/router";
-import InputFile from "@/components/common/input/InputFile";
 import getToken from "@/utils/getToken";
+import handleUpload from "@/utils/handleUpload";
 
 const AddCategory = () => {
   const router = useRouter();

@@ -1,3 +1,8 @@
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
 import Button from "@/components/common/button";
 import InputField from "@/components/common/input/InputField";
 import InputFile from "@/components/common/input/InputFile";
@@ -6,10 +11,6 @@ import { USERS } from "@/constant/api";
 import { USER_CONFIG } from "@/constant/config";
 import useInput from "@/hooks/useInput";
 import handleUpload from "@/utils/handleUpload";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 const EditProfile = () => {
   const nameHook = useInput();

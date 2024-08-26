@@ -31,9 +31,9 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div className="hidden md:flex w-screen mx-auto">
+    <div className="flex w-screen mx-auto">
       <SideBar />
-      <div className="flex flex-col w-full items-start pl-4 pr-8">
+      <div className="flex flex-col w-full max-w-full items-start pl-4 pr-8">
         <NavBar setDrawer={setDrawer} />
         {children}
       </div>

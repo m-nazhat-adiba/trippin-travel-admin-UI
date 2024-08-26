@@ -64,20 +64,24 @@ const Home = () => {
             )}
           </div>
 
-          <div className="flex xl:flex-row flex-col xl:gap-6 gap-4">
+          <div className="flex xl:flex-row flex-col xl:gap-6 gap-4 lg:max-h-[300px] md:max-h-full">
             {activityData.loading ? (
               <p>Loading...</p>
             ) : activityData.error ? (
               <p>Error: {activityData.error.message}</p>
             ) : (
-              <ActivityCard activityData={activityData.data.data[0]} />
+              <div className="lg:w-[60%] md:w-full">
+                <ActivityCard data={activityData.data.data[0]} />
+              </div>
             )}
             {promoData.loading ? (
               <p>Loading...</p>
             ) : promoData.error ? (
               <p>Error: {promoData.error.message}</p>
             ) : (
-              <PromoHighlight data={promoData.data.data[0]} />
+              <div className="lg:w-[40%] md:w-full">
+                <PromoHighlight data={promoData.data.data[0]} />
+              </div>
             )}
           </div>
           <div>

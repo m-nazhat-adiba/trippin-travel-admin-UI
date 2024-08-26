@@ -7,6 +7,7 @@ import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
+import EmptyState from "@/components/common/empty-state/EmptyState";
 
 const Activities = () => {
   const router = useRouter();
@@ -43,11 +44,18 @@ const Activities = () => {
             </Modal>
           ) : null}
 
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full max-w-full">
             {activityData.loading ? (
               <p>Loading...</p>
             ) : activityData.error ? (
               <p>Error: {activityData.error.message}</p>
+            ) : activityData.data.data.length < 1 ? (
+              <div className="w-full h-[calc(100vh_-_240px)] flex items-center justify-center">
+                <EmptyState
+                  title="There is no activity now"
+                  description="Add new activity and bring our customer joy"
+                />
+              </div>
             ) : (
               activityData.data.data.map((item, key) => (
                 <Activity showModal={setShowModal} data={item} key={key} />

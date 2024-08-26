@@ -11,7 +11,7 @@ const ContentLayout = ({
   target = "",
 }) => {
   return (
-    <div className="w-full flex flex-col bg-white shadow-md py-4 rounded-lg gap-3">
+    <div className="w-full max-w-full flex flex-col bg-white shadow-md py-4 rounded-lg gap-3">
       <header className="flex w-full justify-between px-5 pb-4 border-b-4 border-gray-200 items-center bg-white">
         <div className="flex flex-col">
           <h3 className="font-bold">{title}</h3>
@@ -26,7 +26,7 @@ const ContentLayout = ({
           </Link>
         ) : null}
       </header>
-      {children}
+      <div className="w-full">{children}</div>
     </div>
   );
 };

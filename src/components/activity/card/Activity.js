@@ -25,8 +25,8 @@ const Activity = ({ data, showModal }) => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col-reverse xl:gap-0 gap-2 px-5 py-10 w-full border-b-2 border-gray-200 justify-between">
-      <div className="flex flex-col w-[60%] gap-2 pr-8">
+    <div className="flex lg:flex-row flex-col-reverse px-5 py-10 border-b-2 border-gray-200 justify-between relative">
+      <div className="flex flex-col w-full md:max-w-[600px] max-w-[1000px] gap-2 pr-8">
         <header>
           <h2 className="font-bold text-gray-500 text-xs">
             {data.category.name}
@@ -35,12 +35,16 @@ const Activity = ({ data, showModal }) => {
             {data.title}
             <span className="text-yellow-500 mx-1">{data.rating}☆</span>
           </h1>
-          <p className="w-full py-2 text-gray-500">{data.description}</p>
+          <p className="max-w-full py-2 text-gray-500 break-words line-clamp-5">
+            {data.description}
+          </p>
         </header>
 
-        <div className="flex flex-col">
+        <div className="max-w-full flex flex-col">
           <h3 className="font-semibold text-sm text-gray-500">Address:</h3>
-          <p className="text-sm text-gray-600">{data.address}</p>
+          <p className="max-w-full text-sm text-gray-600 break-words line-clamp-2">
+            {data.address}
+          </p>
         </div>
         <div className="flex gap-4">
           <div className="flex flex-col">
@@ -65,14 +69,16 @@ const Activity = ({ data, showModal }) => {
           </div>
         </div>
       </div>
-      <Image
-        loader={imageLoader}
-        src={data.imageUrls[0]}
-        width={360}
-        height={256}
-        alt="activity"
-        className="rounded-md lg:w-1/3 w-full h-auto object-cover"
-      />
+      <div className="rounded-md lg:w-1/3 w-full h-auto over">
+        <Image
+          loader={imageLoader}
+          src={data.imageUrls[0]}
+          width={360}
+          height={256}
+          alt="activity"
+          className="rounded-md w-full h-auto object-cover"
+        />
+      </div>
     </div>
   );
 };

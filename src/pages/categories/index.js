@@ -7,6 +7,7 @@ import Layout from "@/components/common/layout";
 import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
+import EmptyState from "@/components/common/empty-state/EmptyState";
 
 const Categories = () => {
   const router = useRouter();
@@ -38,6 +39,13 @@ const Categories = () => {
               <p>Loading...</p>
             ) : categoryData.error ? (
               <p>{categoryData.error}</p>
+            ) : categoryData.data.data.length < 1 ? (
+              <div className="col-span-6 h-[calc(100vh_-_240px)] flex items-center justify-center">
+                <EmptyState
+                  title="There is no category now"
+                  description="Add new category and so our customer won't confused"
+                />
+              </div>
             ) : (
               categoryData.data.data.map((item, key) => (
                 <Category showModal={setShowModal} data={item} key={key} />

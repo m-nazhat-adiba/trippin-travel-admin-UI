@@ -7,6 +7,7 @@ import ContentLayout from "@/components/common/layout/content";
 import Modal from "@/components/common/modal";
 import ScreenLock from "@/components/common/screen";
 import PromoCard from "@/components/promos/card/PromoCard";
+import EmptyState from "@/components/common/empty-state/EmptyState";
 
 const Promos = () => {
   const router = useRouter();
@@ -37,6 +38,13 @@ const Promos = () => {
             <p>Loading---</p>
           ) : promoData.error ? (
             <p>Error: {promoData.error.message}</p>
+          ) : promoData.data.data.length < 1 ? (
+            <div className="w-full h-[calc(100vh_-_240px)] flex items-center justify-center">
+              <EmptyState
+                title="There is no promo now"
+                description="Add new promo and makes our customer loves us more"
+              />
+            </div>
           ) : (
             <div className="grid xl:grid-cols-4 grid-cols-1 gap-6 px-5">
               {promoData.data.data.map((item, key) => (
